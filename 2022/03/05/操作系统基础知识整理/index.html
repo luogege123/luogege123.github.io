@@ -1,0 +1,1449 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="操作系统基础知识整理, 衣羊干洗">
+    <meta name="description" content="操作系统基础1. 什么是操作系统？
+操作系统（Operating System，简称 OS）是管理计算机硬件与软件资源的程序，是计算机的基石。
+操作系统本质上是一个运行在计算机上的软件程序，用于管理计算机硬件和软件资源。
+操作系统存在屏蔽了">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    
+
+    <title>操作系统基础知识整理 | 衣羊干洗</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">衣羊干洗</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">衣羊干洗</div>
+        <div class="logo-desc">
+            
+            选择比努力更重要
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">操作系统基础知识整理</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                <span class="chip bg-color">操作系统</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/408/" class="post-category">
+                                408
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-03-05
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="操作系统基础"><a href="#操作系统基础" class="headerlink" title="操作系统基础"></a>操作系统基础</h1><h2 id="1-什么是操作系统？"><a href="#1-什么是操作系统？" class="headerlink" title="1. 什么是操作系统？"></a>1. 什么是操作系统？</h2><ol>
+<li>操作系统（Operating System，简称 OS）是<strong>管理</strong>计算机硬件与软件资源的<strong>程序</strong>，是计算机的基石。</li>
+<li>操作系统本质上是一个运行在计算机上的<strong>软件程序</strong>，用于管理计算机硬件和软件资源。</li>
+<li>操作系统存在<strong>屏蔽了硬件层</strong>的复杂性。 </li>
+<li>操作系统的<strong>内核</strong>（Kernel）是操作系统的核心部分，它负责系统的内存管理，硬件设备的管理，文件系统的管理以及应用程序的管理。 内核是连接应用程序和硬件的桥梁，决定着系统的性能和稳定性。<br><img src="https://img-blog.csdnimg.cn/dc03692aa61a4ce7a83608b5b6e9ab07.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_14,color_FFFFFF,t_70,g_se,x_16" alt="操作系统"></li>
+</ol>
+<h2 id="2-什么是系统调用？"><a href="#2-什么是系统调用？" class="headerlink" title="2. 什么是系统调用？"></a>2. 什么是系统调用？</h2><p>根据<strong>进程访问资源</strong>的特点，我们可以把进程在系统上的运行分为两个级别：</p>
+<ol>
+<li><strong>用户态</strong>(user mode)：用户态运行的进程可以<strong>直接读取用户程序的数据</strong>。</li>
+<li><strong>系统态</strong>(kernel mode)：可以简单的理解系统态运行的进程或程序几乎可以<strong>访问计算机的任何资源</strong>，不受限制。</li>
+</ol>
+<p>我们运行的用户程序中，凡是与系统态级别的资源有关的操作（如<strong>设备管理、文件管理、进程管理、进程控制、内存管理</strong>等)，都必须通过系统调用方式向操作系统提出服务请求，并由操作系统代为完成。</p>
+<h1 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h1><h2 id="1-进程和线程的区别。"><a href="#1-进程和线程的区别。" class="headerlink" title="1. 进程和线程的区别。"></a>1. 进程和线程的区别。</h2><p>下图是 Java 内存区域，我们从 JVM 的角度来说一下线程和进程之间的关系吧！<br>从下图可以看出：一个进程中可以有多个线程，<strong>多个线程共享进程的堆和方法区</strong> (JDK1.8 之后的元空间)资源，但是每个线程有自己的<strong>程序计数器</strong>、<strong>虚拟机栈</strong> 和 <strong>本地方法栈</strong>。<br><strong>总结</strong>： 线程是进程划分成的更小的运行单位，一个进程在其执行的过程中可以产生多个线程。线程和进程最大的不同在于基本上各进程是独立的，而各线程则不一定，因为<strong>同一进程中的线程极有可能会相互影响</strong>。线程执行开销小，但不利于资源的管理和保护；而进程正相反。<br><img src="https://img-blog.csdnimg.cn/d4ac896851fa4f3eabe4fb7e40dbbc78.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_18,color_FFFFFF,t_70,g_se,x_16" alt="线程进程"></p>
+<h2 id="2-进程有哪几种状态"><a href="#2-进程有哪几种状态" class="headerlink" title="2. 进程有哪几种状态?"></a>2. 进程有哪几种状态?</h2><p><strong>创建</strong>状态( <code>new</code> ) ：进程正在被创建，尚未到就绪状态。<br><strong>就绪</strong>状态( <code>ready</code> ) ：进程已处于准备运行状态，即进程获得了除了处理器之外的一切所需资源，一旦得到处理器资源(处理器分配的时间片)即可运行。<br><strong>运行</strong>状态( <code>running</code> ) ：进程正在处理器上运行(单核 CPU 下任意时刻只有一个进程处于运行状态)。<br><strong>阻塞</strong>状态( <code>waiting</code> ) ：又称为等待状态，进程正在等待某一事件而暂停运行如等待某资源为可用或等待 IO 操作完成。即使处理器空闲，该进程也不能运行。<br><strong>结束</strong>状态( <code>terminated</code> ) ：进程正在从系统中消失。可能是进程正常结束或其他原因中断退出运行。<br><img src="https://img-blog.csdnimg.cn/6d3a4c94a6914a4780de47dab24ba1ac.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_15,color_FFFFFF,t_70,g_se,x_16" alt="进程"></p>
+<h2 id="3-进程间的通信方式"><a href="#3-进程间的通信方式" class="headerlink" title="3. 进程间的通信方式"></a>3. 进程间的通信方式</h2><p>（进程间的通信常见的的有哪几种方式呢？）</p>
+<ol>
+<li><strong>管道&#x2F;匿名管道</strong>(Pipes) ：用于具有亲缘关系的<strong>父子进程</strong>间或者<strong>兄弟进程</strong>之间的通信。</li>
+<li><strong>有名管道</strong>(Names Pipes) : 匿名管道由于没有名字，只能用于亲缘关系的进程间通信。为了克服这个缺点，提出了有名管道。有名管道严格遵循先进先出(first in first out)。有名管道以磁盘文件的方式存在，可以实现本机任意两个进程通信。</li>
+<li><strong>信号</strong>(Signal) ：信号是一种比较复杂的通信方式，用于<strong>通知</strong>接收进程某个事件已经发生；</li>
+<li><strong>消息队列</strong>(Message Queuing) ：消息队列是消息的链表,具有特定的格式,存放在内存中并由消息队列标识符标识。管道和消息队列的通信数据都是<strong>先进先出</strong>的原则。与管道（<strong>无名管道</strong>：只存在于<strong>内存</strong>中的文件；<strong>命名管道</strong>：存在于实际的<strong>磁盘介质或者文件系统</strong>）不同的是<strong>消息队列存放在内核</strong>中，<strong>只有在内核重启(即，操作系统重启)或者显式地删除一个消息队列时，该消息队列才会被真正的删除。</strong>消息队列可以实现消息的<strong>随机查询</strong>,消息不一定要以先进先出的次序读取,也可以按消息的类型读取.比 FIFO 更有优势。<strong>消息队列克服了信号承载信息量少，管道只能承载无格式字 节流以及缓冲区大小受限等缺点。</strong></li>
+<li><strong>信号量</strong>(Semaphores) ：信号量是一个计数器，<strong>用于多进程对共享数据的访问</strong>，信号量的意图在于进程间同步。这种通信方式主要用于解决与同步相关的问题并避免竞争条件。</li>
+<li><strong>共享内存</strong>(Shared memory) ：使得多个进程可以访问同一块内存空间，不同进程可以及时看到对方进程中对共享内存中数据的更新。这种方式需要依靠<strong>某种同步操作，如互斥锁和信号量</strong>等。可以说这是最有用的进程间通信方式。</li>
+<li><strong>套接字</strong>(Sockets) : 此方法主要用于在客户端和服务器之间通过网络进行通信。套接字是支持 TCP&#x2F;IP 的网络通信的基本操作单元，可以看做是不同主机之间的进程进行双向通信的<strong>端点</strong>，简单的说就是通信的两方的一种约定，用套接字中的相关函数来完成通信过程。</li>
+</ol>
+<h2 id="4-线程间的同步的方式"><a href="#4-线程间的同步的方式" class="headerlink" title="4. 线程间的同步的方式"></a>4. 线程间的同步的方式</h2><p>那线程间的同步的方式有哪些呢？<br><strong>线程同步</strong>是<strong>两个或多个共享关键资源的线程的并发执行</strong>。应该同步线程以避免关键的资源使用冲突。操作系统一般有下面三种线程同步的方式：</p>
+<ol>
+<li><strong>互斥量</strong>(Mutex)：采用互斥对象机制，只有拥有互斥对象的线程才有访问公共资源的权限。因为互斥对象只有一个，所以可以保证公共资源不会被多个线程同时访问。比如 Java 中的 synchronized 关键词和各种 Lock 都是这种机制。</li>
+<li><strong>信号量</strong>(Semphares) ：它允许同一时刻多个线程访问同一资源，但是需要控制同一时刻访问此资源的最大线程数量。</li>
+<li><strong>事件</strong>(Event) :Wait&#x2F;Notify：通过通知操作的方式来保持多线程同步，还可以方便的实现多线程优先级的比较操作。<h2 id="5-进程的调度算法"><a href="#5-进程的调度算法" class="headerlink" title="5. 进程的调度算法"></a>5. 进程的调度算法</h2><strong>目的</strong>：为了确定首先执行哪个进程以及最后执行哪个进程以<strong>实现最大 CPU 利用率</strong></li>
+<li>**先到先服务(FCFS)**调度算法 : 从就绪队列中选择一个最先进入该队列的进程为之分配资源，使它立即执行并一直执行到完成或发生某事件而被阻塞放弃占用 CPU 时再重新调度。</li>
+<li>**短作业优先(SJF)**的调度算法 : 从就绪队列中选出一个估计运行时间最短的进程为之分配资源，使它立即执行并一直执行到完成或发生某事件而被阻塞放弃占用 CPU 时再重新调度。（照顾了短进程而忽略了长进程）</li>
+<li><strong>时间片轮转</strong>调度算法 : 时间片轮转调度是一种最古老，最简单，最公平且使用最广的算法，又称 RR(Round robin)调度。每个进程被分配一个时间段，称作它的时间片，即该进程允许运行的时间。<br>4 <strong>多级反馈队列</strong>调度算法 ：前面介绍的几种进程调度的算法都有一定的局限性。如短进程优先的调度算法，仅照顾了短进程而忽略了长进程 。多级反馈队列调度算法既能使高优先级的作业得到响应又能使短作业（进程）迅速完成。，因而它是目前被公认的一种较好的进程调度算法，UNIX 操作系统采取的便是这种调度算法。</li>
+<li><strong>优先级</strong>调度 ： 为每个流程<strong>分配优先级</strong>，首先执行具有最高优先级的进程，依此类推。具有相同优先级的进程以 FCFS 方式执行。可以根据内存要求，时间要求或任何其他资源要求来确定优先级。<h2 id="6-什么是死锁？"><a href="#6-什么是死锁？" class="headerlink" title="6. 什么是死锁？"></a>6. 什么是死锁？</h2>多个进程&#x2F;线程同时被阻塞，它们中的一个或者全部都在等待某个资源被释放。由于进程&#x2F;线程被无限期地阻塞，因此程序不可能正常终止。</li>
+</ol>
+<h2 id="7-死锁的四个必要条件？"><a href="#7-死锁的四个必要条件？" class="headerlink" title="7. 死锁的四个必要条件？"></a>7. 死锁的四个必要条件？</h2><p>四个条件同时成立，那么就能引起死锁。（<strong>互斥、占有并等待、非抢占、循环等待</strong>）</p>
+<ol>
+<li><strong>互斥</strong>：资源必须处于非共享模式，即一次只有一个进程可以使用。如果另一进程申请该资源，那么必须等待直到该资源被释放为止。</li>
+<li><strong>占有并等待</strong>：一个进程至少应该占有一个资源，并等待另一资源，而该资源被其他进程所占有。</li>
+<li><strong>非抢占</strong>：资源不能被抢占。只能在持有资源的进程完成任务后，该资源才会被释放。</li>
+<li><strong>循环等待</strong>：有一组等待进程 {P0, P1,…, Pn}， P0 等待的资源被 P1 占有，P1 等待的资源被 P2 占有，……，Pn-1 等待的资源被 Pn 占有，Pn 等待的资源被 P0 占有。</li>
+</ol>
+<h2 id="8-解决死锁的方法？"><a href="#8-解决死锁的方法？" class="headerlink" title="8. 解决死锁的方法？"></a>8. 解决死锁的方法？</h2><p><strong>预防，避免，检测和解除</strong>。</p>
+<ol>
+<li><strong>预防</strong> 是采用某种策略，<strong>限制并发进程对资源的请求</strong>，从而使得死锁的必要条件在系统执行的任何时间上都不满足。</li>
+<li><strong>避免</strong>则是系统在分配资源时，根据资源的使用情况<strong>提前做出预测，从而避免死锁的发生</strong></li>
+<li><strong>检测</strong>是指系统设有<strong>专门的机构</strong>，当死锁发生时，该机构能够检测死锁的发生，并精确地确定与死锁有关的进程和资源。</li>
+<li><strong>解除</strong> 是与检测相配套的一种措施，用于<strong>将进程从死锁状态下解脱出来</strong>。</li>
+</ol>
+<h3 id="8-1-死锁的预防"><a href="#8-1-死锁的预防" class="headerlink" title="8.1 死锁的预防"></a>8.1 死锁的预防</h3><p>破坏第一个条件 <strong>互斥条件</strong>：使得资源是可以同时访问的，这是种简单的方法，磁盘就可以用这种方法管理，但是我们要知道，有很多资源 <strong>往往是不能同时访问的</strong> ，所以这种做法在大多数的场合是<strong>行不通</strong>的。</p>
+<p>破坏第三个条件 <strong>非抢占</strong> ：也就是说可以采用 <strong>剥夺式调度算法</strong>，但剥夺式调度方法目前一般仅适用于 主存资源 和 处理器资源 的分配，并不适用于所以的资源，会导致 <strong>资源利用率下降</strong>。</p>
+<p>所以一般比较实用的 预防死锁的方法，是通过考虑破坏第二个条件和第四个条件。</p>
+<ol>
+<li><strong>静态分配策略</strong>（破坏第二个条件（占有并等待））<br>指一个进程必须在执行前就申请到它所需要的全部资源，并且知道它所要的资源都得到满足之后才开始执行。<strong>进程要么占有所有的资源然后开始执行，要么不占有资源不执行。</strong></li>
+<li><strong>层次分配策略</strong>（破坏第四个条件(循环等待)）<br>在层次分配策略下，所有的资源被分成了多个层次，一个进程得到某一次的一个资源后，它只能再<strong>申请较高一层</strong>的资源；<br>当一个进程要释放某层的一个资源时，必须先<strong>释放所占用的较高层的资源</strong>。</li>
+</ol>
+<p>（<strong>预防系统发生死锁 ，但是会导致 低效的进程运行 和 资源使用率</strong> 。）</p>
+<h3 id="8-2-死锁的避免"><a href="#8-2-死锁的避免" class="headerlink" title="8.2 死锁的避免"></a>8.2 死锁的避免</h3><p>避免死锁算法 就是 <code>Dijkstra</code> 的<strong>银行家算法</strong>，银行家算法用一句话表达就是：当一个进程申请使用资源的时候，<strong>银行家算法</strong> 通过先 <strong>试探</strong> 分配给该进程资源，然后通过 <strong>安全性算法</strong> 判断分配后系统是否处于安全状态，若不安全则试探分配作废，让该进程继续等待，若能够进入到安全的状态，则就 <strong>真的分配资源给该进程</strong>。</p>
+<p>(<strong>死锁的避免(银行家算法)改善解决了 资源使用率低的问题 ，但是它要不断地检测每个进程对各类资源的占用和申请情况，以及做 安全性检查 ，需要花费较多的时间</strong>)</p>
+<h3 id="8-3-死锁的检测"><a href="#8-3-死锁的检测" class="headerlink" title="8.3 死锁的检测"></a>8.3 死锁的检测</h3><p>对资源的分配加以限制可以 <strong>预防和避免</strong> 死锁的发生，但是都不利于各进程对系统资源的<strong>充分共享</strong>。<br>这种方法对资源的分配不加以任何限制，也不采取死锁避免措施，但系统 <strong>定时地运行一个 “死锁检测” 的程序</strong>，判断系统内是否出现死锁，如果检测到系统发生了死锁，再采取措施去解除它。<br><img src="https://img-blog.csdnimg.cn/88f57519e9bf4dfd80aaf2e829e2653c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_20,color_FFFFFF,t_70,g_se,x_16" alt="等待资源的环路"><br>图中 2-21 是 <strong>进程-资源分配图</strong> 的一个例子，其中共有三个资源类，每个进程的资源占有和申请情况已清楚地表示在图中。在这个例子中，由于存在 <strong>占有和等待资源的环路</strong> ，导致一组进程永远处于等待资源的状态，发生了 <strong>死锁</strong>。</p>
+<p>图 2-22 便是一个<strong>有环路而无死锁</strong>的例子。虽然进程 P1 和进程 P3 分别占用了一个资源 R1 和一个资源 R2，并且因为等待另一个资源 R2 和另一个资源 R1 形成了环路，但进程 P2 和进程 P4 分别占有了一个资源 R1 和一个资源 R2，它们申请的资源得到了满足，在有限的时间里会归还资源，于是进程 P1 或 P3 都能获得另一个所需的资源，环路自动解除，系统也就不存在死锁状态了。</p>
+<p><strong>死锁检测步骤</strong><br>知道了死锁检测的原理，我们可以利用下列步骤编写一个 <strong>死锁检测</strong> 程序，检测系统是否产生了死锁。</p>
+<ol>
+<li>如果进程-资源分配图中<strong>无环路</strong>，则此时系统没有发生死锁</li>
+<li>如果进程-资源分配图中<strong>有环路</strong>，且<strong>每个资源类仅有一个资源</strong>，则系统中已经发生了死锁。</li>
+<li>如果进程-资源分配图中<strong>有环路</strong>，且涉及到的资源类有多个资源，此时系统未必会发生死锁。如果能在进程-资源分配图中找出一个 <strong>既不阻塞又非独立的进程</strong> ，该进程能够在有限的时间内归还占有的资源，也就是把边给消除掉了，重复此过程，直到能在有限的时间内 <strong>消除所有的边</strong> ，则不会发生死锁，否则会发生死锁。(消除边的过程类似于 <strong>拓扑排序</strong>)<h3 id="8-4-死锁的解除"><a href="#8-4-死锁的解除" class="headerlink" title="8.4 死锁的解除"></a>8.4 死锁的解除</h3>让其解除，让系统从死锁状态中恢复过来。</li>
+<li><strong>立即结束<del>所有进程</del> 的执行，重新启动操作系统</strong> ：这种方法简单，但以前所在的工作全部作废，损失很大。</li>
+<li><strong>撤销涉及<del>死锁</del> 的所有进程，解除死锁后继续运行</strong> ：这种方法能彻底打破死锁的循环等待条件，但将付出很大代价，例如有些进程可能已经计算了很长时间，由于被撤销而使产生的部分结果也被消除了，再重新执行时还要再次进行计算。</li>
+<li><strong><del>逐个撤销</del> 涉及死锁的进程，回收其资源直至死锁解除</strong>。</li>
+<li><strong>抢占资源</strong> ：从涉及死锁的一个或几个进程中抢占资源，把夺得的资源再分配给涉及死锁的进程直至死锁解除。</li>
+</ol>
+<h1 id="操作系统内存管理基础"><a href="#操作系统内存管理基础" class="headerlink" title="操作系统内存管理基础"></a>操作系统内存管理基础</h1><h2 id="1-操作系统的内存管理主要是做什么？（内存分配回收和地址转换）"><a href="#1-操作系统的内存管理主要是做什么？（内存分配回收和地址转换）" class="headerlink" title="1. 操作系统的内存管理主要是做什么？（内存分配回收和地址转换）"></a>1. 操作系统的内存管理主要是做什么？（内存分配回收和地址转换）</h2><p>主要负责<strong>内存的分配与回收</strong>（malloc 函数：申请内存，free 函数：释放内存），另外<strong>地址转换</strong>也就是将逻辑地址转换成相应的物理地址等功能也是操作系统内存管理做的事情。</p>
+<h2 id="2-常见的内存管理机制有几种？"><a href="#2-常见的内存管理机制有几种？" class="headerlink" title="2. 常见的内存管理机制有几种？"></a>2. 常见的内存管理机制有几种？</h2><p>连续分配管理方式（<strong>块式管理</strong>）和非连续分配管理方式（<strong>页式管理</strong> 和 <strong>段式管理</strong>）<br><strong>块式管理</strong>：远古时代的计算机操系统的内存管理方式。将内存分为几个固定大小的块，每个块中只包含一个进程。如果程序运行需要内存的话，操作系统就分配给它一块，如果程序运行只需要很小的空间的话，分配的这块内存很大一部分几乎被浪费了。这些在每个块中未被利用的空间，我们称之为碎片。<br><strong>页式管理</strong>：把主存分为大小相等且固定的一页一页的形式，页较小，相对相比于块式管理的划分力度更大，提高了内存利用率，减少了碎片。<strong>页式管理通过页表对应逻辑地址和物理地址</strong>。<br><strong>段式管理</strong>：页式管理虽然提高了内存利用率，但是页式管理其中的页实际并无任何实际意义。 段式管理把主存分为一段段的，段是有实际意义的，每个段定义了一组逻辑信息，例如,有主程序段 MAIN、子程序段 X、数据段 D 及栈段 S 等。 <strong>段式管理通过段表对应逻辑地址和物理地址</strong>。<br><strong>段页式管理机制</strong>：段页式管理机制<strong>结合了段式管理和页式管理</strong>的优点。简单来说段页式管理机制就是把<strong>主存先分成若干段，每个段又分成若干页</strong>，也就是说 段页式管理机制 中段与段之间以及段的内部的都是离散的。<br>（页是物理单位，段是逻辑单位。分页可以有效提高内存利用率，分段可以更好满足用户需求。）</p>
+<h2 id="3-快表和多级页表"><a href="#3-快表和多级页表" class="headerlink" title="3. 快表和多级页表"></a>3. 快表和多级页表</h2><p><strong>快表</strong><br>为了解决虚拟地址到物理地址的转换速度，操作系统在 <strong>页表方案</strong> 基础之上引入了 <strong>快表</strong> 来加速虚拟地址到物理地址的转换。我们可以把快表理解为一种特殊的高速缓冲存储器（Cache），其中的内容是页表的一部分或者全部内容。作为页表的 Cache，它的作用与页表相似，但是提高了访问速率。由于采用页表做地址转换，读写内存数据时 CPU 要访问两次主存。有了快表，有时只要访问一次高速缓冲存储器，一次主存，这样可加速查找并提高指令执行速度。<br>使用快表之后的地址转换流程是这样的：</p>
+<ol>
+<li>根据虚拟地址中的页号查快表；</li>
+<li>如果该页在快表中，直接从快表中读取相应的物理地址；</li>
+<li>如果该页不在快表中，就访问内存中的页表，再从页表中得到物理地址，同时将页表中的该映射表项添加到快表中；</li>
+<li>当快表填满后，又要登记新页时，就按照一定的淘汰策略淘汰掉快表中的一个页。</li>
+</ol>
+<p><strong>多级页表</strong><br>引入多级页表的主要目的是为了<strong>避免把全部页表一直放在内存中占用过多空间</strong>，特别是那些根本就不需要的页表就不需要保留在内存中。</p>
+<h2 id="4-分页机制和分段机制的共同点和区别"><a href="#4-分页机制和分段机制的共同点和区别" class="headerlink" title="4. 分页机制和分段机制的共同点和区别"></a>4. 分页机制和分段机制的共同点和区别</h2><p><strong>共同点</strong> ：<br>分页机制和分段机制都是为了<strong>提高内存利用率，减少内存碎片</strong>。<br>页和段都是离散存储的，所以两者都是离散分配内存的方式。但是，每个页和段中的内存是连续的。<br><strong>区别</strong>：<br><strong>页的大小是固定的</strong>，由操作系统决定；而<strong>段的大小不固定</strong>，取决于我们当前运行的程序。<br>分页仅仅是为了<strong>满足操作系统内存管理的需求</strong>，而段是逻辑信息的单位，在程序中可以体现为代码段，数据段，能够更好<strong>满足用户的需求</strong>。</p>
+<h2 id="5-逻辑-虚拟-地址和物理地址"><a href="#5-逻辑-虚拟-地址和物理地址" class="headerlink" title="5. 逻辑(虚拟)地址和物理地址"></a>5. 逻辑(虚拟)地址和物理地址</h2><p>比如在 C 语言中，指针里面存储的数值就可以理解成为内存里的一个地址，这个地址也就是我们说的逻辑地址，<strong>逻辑地址由操作系统决定</strong>。<strong>物理地址指的是真实物理内存中地址</strong>，更具体一点来说就是<strong>内存地址寄存器中的地址</strong>。物理地址是内存单元真正的地址。</p>
+<h2 id="6-CPU-寻址了解吗-为什么需要虚拟地址空间"><a href="#6-CPU-寻址了解吗-为什么需要虚拟地址空间" class="headerlink" title="6. CPU 寻址了解吗?为什么需要虚拟地址空间?"></a>6. CPU 寻址了解吗?为什么需要虚拟地址空间?</h2><p>现代处理器使用的是一种称为 <strong>虚拟寻址(Virtual Addressing)</strong> 的寻址方式。<strong>使用虚拟寻址，CPU 需要将虚拟地址翻译成物理地址，这样才能访问到真实的物理内存</strong>。 实际上完成虚拟地址转换为物理地址转换的硬件是 CPU 中含有一个被称为 <strong>内存管理单元</strong>（Memory Management Unit, MMU） 的硬件。<br><img src="https://img-blog.csdnimg.cn/b3532546543644d2a04f0883cd6ae217.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_20,color_FFFFFF,t_70,g_se,x_16" alt="虚拟寻址"><br><strong>为什么要有虚拟地址空间呢？</strong><br>总结来说：如果直接把物理地址暴露出来的话会带来严重问题，比如可能对操作系统造成伤害以及给同时运行多个程序造成困难。</p>
+<p><strong>通过虚拟地址访问内存有以下优势：</strong></p>
+<ol>
+<li>程序可以使用一系列相邻的虚拟地址来访问物理内存中不相邻的大内存缓冲区。</li>
+<li>程序可以使用一系列虚拟地址来访问大于可用物理内存的内存缓冲区。当物理内存的供应量变小时，内存管理器会将物理内存页（通常大小为 4 KB）保存到磁盘文件。数据或代码页会根据需要在物理内存与磁盘之间移动。</li>
+<li>不同进程使用的虚拟地址彼此隔离。一个进程中的代码无法更改正在由另一进程或操作系统使用的物理内存。</li>
+</ol>
+<h1 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h1><h2 id="1-什么是虚拟内存-Virtual-Memory"><a href="#1-什么是虚拟内存-Virtual-Memory" class="headerlink" title="1. 什么是虚拟内存(Virtual Memory)?"></a>1. 什么是虚拟内存(Virtual Memory)?</h2><p>很多时候我们使用点开了很多占内存的软件，这些软件占用的内存可能已经远远超出了我们电脑本身具有的物理内存。为什么可以这样呢？ 正是因为 <strong>虚拟内存</strong> 的存在，通过 <strong>虚拟内存</strong> 可以让程序可以拥有超过系统物理内存大小的可用内存空间。另外，<strong>虚拟内存为每个进程提供了一个一致的、私有的地址空间，它让每个进程产生了一种自己在独享主存的错觉</strong>（每个进程拥有一片连续完整的内存空间）。这样会更加有效地管理内存并减少出错。</p>
+<p><strong>虚拟内存</strong>是一种<strong>计算机系统内存管理技术</strong>，我们可以手动设置自己电脑的虚拟内存。不要单纯认为虚拟内存只是“使用硬盘空间来扩展内存“的技术。<strong>虚拟内存的重要意义是它定义了一个连续的虚拟地址空间，并且 把内存扩展到硬盘空间</strong>。</p>
+<h2 id="2-局部性原理"><a href="#2-局部性原理" class="headerlink" title="2. 局部性原理"></a>2. 局部性原理</h2><p>要想更好地理解虚拟内存技术，必须要知道计算机中著名的局部性原理。另外，局部性原理既适用于程序结构，也适用于数据结构，是非常重要的一个概念。<br>局部性原理是虚拟内存技术的基础，正是因为程序运行具有局部性原理，才可以只装入部分程序到内存就开始运行。<br>局部性原理表现在以下两个方面：</p>
+<ul>
+<li><strong>时间局部性</strong> ：如果程序中的某条指令一旦执行，不久以后该指令<strong>可能再次执行</strong>；如果某数据被访问过，不久以后该数据可能<strong>再次被访问</strong>。产生时间局部性的典型原因，是由于在<strong>程序中存在着大量的循环操作</strong>。</li>
+<li><strong>空间局部性</strong> ：一旦程序访问了某个存储单元，在不久之后，其附近的存储单元也将被访问，即<strong>程序在一段时间内所访问的地址，可能集中在一定的范围之内</strong>，这是因为指令通常是顺序存放、顺序执行的，数据也一般是以向量、数组、表等形式簇聚存储的。</li>
+</ul>
+<p><strong>时间局部性</strong>是通过将近来使用的指令和数据保存到高速缓存存储器中，并使用高速缓存的层次结构实现。<br><strong>空间局部性</strong>通常是使用较大的高速缓存，并将预取机制集成到高速缓存控制逻辑中实现。<br>虚拟内存技术实际上就是建立了 “<strong>内存一外存</strong>”的两级存储器的结构，利用<strong>局部性原理</strong>实现髙速缓存。</p>
+<h2 id="3-虚拟存储器"><a href="#3-虚拟存储器" class="headerlink" title="3. 虚拟存储器"></a>3. 虚拟存储器</h2><p>基于局部性原理，在程序装入时，可以将程序的一部分装入内存，而将其他部分留在外存，就可以启动程序执行。由于外存往往比内存大很多，所以我们运行的软件的内存大小实际上是可以比计算机系统实际的内存大小大的。</p>
+<ul>
+<li>在程序执行过程中，当所访问的信息不在内存时，由操作系统将所需要的部分调入内存，然后继续执行程序。另一方面，操作系统将内存中暂时不使用的内容换到外存上，从而腾出空间存放将要调入内存的信息。这样，<strong>计算机好像为用户提供了一个比实际内存大的多的存储器</strong>——<strong>虚拟存储器</strong>。</li>
+</ul>
+<p>实际上，我觉得虚拟内存同样是一种 <strong>时间换空间</strong> 的策略，你用 CPU 的计算时间，页的调入调出花费的时间，换来了一个虚拟的更大的空间来支持程序的运行。</p>
+<h2 id="4-虚拟内存的技术实现"><a href="#4-虚拟内存的技术实现" class="headerlink" title="4. 虚拟内存的技术实现"></a>4. 虚拟内存的技术实现</h2><p>虚拟内存的实现需要建立在离散分配的内存管理方式的基础上。</p>
+<ol>
+<li><strong>请求分页</strong>存储管理</li>
+<li><strong>请求分段</strong>存储管理</li>
+<li><strong>请求段页式</strong>存储管理</li>
+</ol>
+<p><strong>请求分页与分页存储管理，两者有何不同呢？</strong></p>
+<p>请求分页存储管理建立在分页管理之上。他们的根本区别是是否将程序全部所需的全部地址空间都装入主存，这也是请求分页存储管理可以提供虚拟内存的原因。<br>它们之间的根本区别在于<strong>是否将一作业的全部地址空间同时装入主存</strong>。请求分页存储管理不要求将作业全部地址空间同时装入主存。基于这一点，<strong>请求分页存储管理可以提供虚存，而分页存储管理却不能提供虚存</strong>。</p>
+<h2 id="5-页面置换算法-页面置换算法的作用-常见的页面置换算法有哪些"><a href="#5-页面置换算法-页面置换算法的作用-常见的页面置换算法有哪些" class="headerlink" title="5. 页面置换算法(页面置换算法的作用?常见的页面置换算法有哪些?)"></a>5. 页面置换算法(页面置换算法的作用?常见的页面置换算法有哪些?)</h2><p>地址映射过程中，若在页面中发现所要访问的页面不在内存中，则发生<strong>缺页中断</strong> 。<br><strong>缺页中断</strong>：就是要访问的页不在主存，需要操作系统将其调入主存后再进行访问。 在这个时候，被内存映射的文件实际上成了一个分页交换文件。</p>
+<ul>
+<li>当发生缺页中断时，如果当前内存中并没有空闲的页面，操作系统就必须在内存<strong>选择一个页面将其移出内存</strong>，以便为即将调入的页面让出空间。<br><strong>用来选择淘汰哪一页的规则</strong>叫做<strong>页面置换算法</strong>，我们可以把页面置换算法看成是淘汰页面的规则。<br>（最佳、先进先出、最近最久未使用、最少使用）4种。</li>
+</ul>
+<ol>
+<li>OPT 页面置换算法（<strong>最佳</strong>页面置换算法） ：最佳(Optimal, OPT)置换算法所选择的被淘汰页面将是以后永不使用的，或者是在最长时间内不再被访问的页面,这样可以保证获得最低的缺页率。但由于人们目前无法预知进程在内存下的若千页面中哪个是未来最长时间内不再被访问的，因而该算法无法实现。一般作为衡量其他置换算法的方法。</li>
+<li>FIFO（First In First Out） 页面置换算法（<strong>先进先出</strong>页面置换算法） : 总是淘汰最先进入内存的页面，即选择在内存中驻留时间最久的页面进行淘汰。</li>
+<li>LRU （Least Recently Used）页面置换算法（<strong>最近最久未使用</strong>页面置换算法） ：LRU 算法赋予每个页面一个访问字段，用来记录一个页面自上次被访问以来所经历的时间 T，当须淘汰一个页面时，选择现有页面中其 T 值最大的，即最近最久未使用的页面予以淘汰。</li>
+<li>LFU （Least Frequently Used）页面置换算法（<strong>最少使用</strong>页面置换算法） : 该置换算法选择在之前时期使用最少的页面作为淘汰页。</li>
+</ol>
+<h1 id="后端程序员必备的-Linux-基础知识总结"><a href="#后端程序员必备的-Linux-基础知识总结" class="headerlink" title="后端程序员必备的 Linux 基础知识总结"></a>后端程序员必备的 Linux 基础知识总结</h1><h2 id="1-从认识操作系统开始"><a href="#1-从认识操作系统开始" class="headerlink" title="1. 从认识操作系统开始"></a>1. 从认识操作系统开始</h2><ol>
+<li>操作系统（Operating System，简称 OS）是管理计算机硬件与软件资源的程序，是计算机的基石。</li>
+<li>操作系统本质上是一个运行在计算机上的软件程序 ，用于管理计算机硬件和软件资源。 举例：运行在你电脑上的所有应用程序都通过操作系统来调用系统内存以及磁盘等等硬件。</li>
+<li>操作系统存在屏蔽了硬件层的复杂性。 操作系统就像是硬件使用的负责人，统筹着各种相关事项。</li>
+<li>操作系统的内核（Kernel）是操作系统的核心部分，它负责系统的内存管理，硬件设备的管理，文件系统的管理以及应用程序的管理。<br><img src="https://img-blog.csdnimg.cn/d82b9f4c22c24229b7df7a3125dc2bd2.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_14,color_FFFFFF,t_70,g_se,x_16" alt="os"><h2 id="2-操作系统简单分类"><a href="#2-操作系统简单分类" class="headerlink" title="2. 操作系统简单分类"></a>2. 操作系统简单分类</h2></li>
+<li>Windows</li>
+<li>Unix<br>最早的多用户、多任务操作系统 。后面崛起的 Linux 在很多方面都参考了 Unix。<br>目前这款操作系统已经逐渐逐渐退出操作系统的舞台。</li>
+<li>Linux<br><code>Linux</code> 是一套免费使用、开源的类 <code>Unix</code> 操作系统。 <code>Linux</code> 存在着许多不同的发行版本，但它们都使用了 <code>Linux</code> 内核 。<br>严格来讲，<code>Linux</code> 这个词本身只表示 <code>Linux</code> 内核，在 <code>GNU/Linux</code> 系统中，<code>Linux</code> 实际就是 <code>Linux</code> 内核，而该系统的其余部分主要是由 <code>GNU</code> 工程编写和提供的程序组成。单独的 <code>Linux</code> 内核并不能成为一个可以正常工作的操作系统。<br>很多人更倾向使用 “<code>GNU/Linux</code>” 一词来表达人们通常所说的 “<code>Linux</code>”。</li>
+<li>Mac OS<br>苹果自家的操作系统，编程体验和 Linux 相当，但是界面、软件生态以及用户体验各方面都要比 Linux 操作系统更好。<h2 id="3-操作系统的内核（Kernel）"><a href="#3-操作系统的内核（Kernel）" class="headerlink" title="3. 操作系统的内核（Kernel）"></a>3. 操作系统的内核（Kernel）</h2></li>
+<li>操作系统的内核（Kernel）是操作系统的核心部分，它负责系统的内存管理，硬件设备的管理，文件系统的管理以及应用程序的管理。</li>
+<li>操作系统的内核是连接应用程序和硬件的桥梁，决定着操作系统的性能和稳定性。<h2 id="4-中央处理器（CPU，Central-Processing-Unit）"><a href="#4-中央处理器（CPU，Central-Processing-Unit）" class="headerlink" title="4. 中央处理器（CPU，Central Processing Unit）"></a>4. 中央处理器（CPU，Central Processing Unit）</h2></li>
+<li>CPU 是一台计算机的<strong>运算核心（Core）</strong>+<strong>控制核心（ Control Unit）</strong>，可以称得上是计算机的大脑。</li>
+<li>CPU 主要包括两个部分：<strong>控制器</strong> + <strong>运算器</strong>。</li>
+<li>CPU 的根本任务就是<strong>执行指令</strong>，对计算机来说最终都是一串由“0”和“1”组成的序列。<h2 id="5-CPU-vs-Kernel-内核"><a href="#5-CPU-vs-Kernel-内核" class="headerlink" title="5. CPU vs Kernel(内核)"></a>5. CPU vs Kernel(内核)</h2></li>
+<li>操作系统的内核（Kernel）属于操作系统层面，而 CPU 属于硬件。</li>
+<li>CPU 主要提供运算，处理各种指令的能力。内核（Kernel）主要负责系统管理比如内存管理，它屏蔽了对硬件的操作。<h2 id="6-系统调用"><a href="#6-系统调用" class="headerlink" title="6. 系统调用"></a>6. 系统调用</h2>我们运行的用户程序中<strong>（用户态）</strong>，凡是与系统态级别的资源有关的操作（如文件管理、进程控制、内存管理等)，都必须通过系统调用方式向操作系统提出服务请求，并由操作系统代为完成<strong>（系统态）</strong>。</li>
+</ol>
+<h1 id="2-初探-Linux"><a href="#2-初探-Linux" class="headerlink" title="2. 初探 Linux"></a>2. 初探 Linux</h1><h2 id="1-Linux-简介"><a href="#1-Linux-简介" class="headerlink" title="1. Linux 简介"></a>1. Linux 简介</h2><ul>
+<li>类 <code>Unix</code> 系统 ： <code>Linux</code> 是一种自由、开放源码的类似 Unix 的操作系统</li>
+<li><code>Linux</code> 本质是指 <code>Linux</code> 内核 ： 严格来讲，<code>Linux</code> 这个词本身只表示 <code>Linux</code> 内核，单独的 <code>Linux</code> 内核并不能成为一个可以正常工作的操作系统。所以，就有了各种 <code>Linux</code> 发行版。</li>
+<li><code>Linux</code> 之父(林纳斯·本纳第克特·托瓦兹 Linus Benedict Torvalds) ： 一个编程领域的传奇式人物，真大佬！我辈崇拜敬仰之楷模。他是 <code>Linux</code> 内核 的最早作者，随后发起了这个开源项目，担任 <code>Linux</code> 内核的首要架构师。他还发起了 <code>Git</code> 这个开源项目，并为主要的开发者。<h2 id="2-常见-Linux-发行版本有哪些？"><a href="#2-常见-Linux-发行版本有哪些？" class="headerlink" title="2. 常见 Linux 发行版本有哪些？"></a>2. 常见 Linux 发行版本有哪些？</h2><code>Linux</code> 的发行版本可以大体分为两类：<br>商业公司维护的发行版本，以著名的 <code>Red Hat</code> 为代表，比较典型的有 <code>CentOS</code> 。<br>社区组织维护的发行版本，以 <code>Debian</code> 为代表，比较典型的有 <code>Ubuntu、</code>Debian<code>。 对于初学者学习 </code>Linux<code>,推荐选择</code>CentOS&#96; 。<h1 id="3-Linux-文件系统概览"><a href="#3-Linux-文件系统概览" class="headerlink" title="3. Linux 文件系统概览"></a>3. Linux 文件系统概览</h1><h2 id="1-Linux-文件系统简介"><a href="#1-Linux-文件系统简介" class="headerlink" title="1. Linux 文件系统简介"></a>1. Linux 文件系统简介</h2><strong>在 <code>Linux</code> 操作系统中，所有被操作系统管理的资源，例如网络接口卡、磁盘驱动器、打印机、输入输出设备、普通文件或是目录都被看作是一个文件</strong>。(一切都是文件)。<h2 id="2-inode-index-node-介绍"><a href="#2-inode-index-node-介绍" class="headerlink" title="2. inode (index + node) 介绍"></a>2. inode (index + node) 介绍</h2><code>inode</code> 是 <code>linux/unix</code> 文件系统的基础。那么，<code>inode</code> 是什么?有什么作用呢?</li>
+<li>inode ：记录文件的属性信息，可以使用 stat 命令查看 inode 信息。</li>
+<li>block ：实际文件的内容，如果一个文件大于一个块时候，那么将占用多个 block，但是一个块只能存放一个文件。（因为数据是由 inode 指向的，如果有两个文件的数据存放在同一个块中，就会乱套了）<br><img src="https://img-blog.csdnimg.cn/abd1655d34c942eebe3116503647c86d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_17,color_FFFFFF,t_70,g_se,x_16" alt="inode"><h2 id="3-Linux-文件类型"><a href="#3-Linux-文件类型" class="headerlink" title="3. Linux 文件类型"></a>3. Linux 文件类型</h2><code>Linux</code> 支持很多文件类型，其中非常重要的文件类型有:<br>普通文件，目录文件，链接文件，设备文件，管道文件，Socket 套接字文件等。</li>
+<li><strong>普通文件</strong>（-） ： 用于存储信息和数据， Linux 用户可以根据访问权限对普通文件进行查看、更改和删除。比如：图片、声音、PDF、text、视频、源代码等等。</li>
+<li><strong>目录文件</strong>（d，directory file） ：目录也是文件的一种，用于表示和管理系统中的文件，目录文件中包含一些文件名和子目录名。打开目录事实上就是打开目录文件。</li>
+<li><strong>符号链接文件</strong>（l，symbolic link） ：保留了指向文件的地址而不是文件本身。</li>
+<li><strong>字符设备</strong>（c，char） ：用来访问字符设备比如键盘。</li>
+<li><strong>设备文件</strong>（b，block） ： 用来访问块设备比如硬盘、软盘。</li>
+<li><strong>管道文件</strong>(p,pipe) : 一种特殊类型的文件，用于进程之间的通信。</li>
+<li><strong>套接字</strong>(s,socket) ：用于进程间的网络通信，也可以用于本机之间的非网络通信。<h2 id="4-Linux-目录树"><a href="#4-Linux-目录树" class="headerlink" title="4. Linux 目录树"></a>4. Linux 目录树</h2><img src="https://img-blog.csdnimg.cn/d42ce99ada964bdca6f5fd9c0743e118.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_20,color_FFFFFF,t_70,g_se,x_16" alt="目录树"></li>
+<li><strong>&#x2F;bin</strong>： 存放<strong>二进制可执行文件</strong>(ls、cat、mkdir 等)，<strong>常用命令</strong>一般都在这里；</li>
+<li><strong>&#x2F;etc</strong>： 存放<strong>系统管理和配置文件</strong>；</li>
+<li><strong>&#x2F;home</strong>： 存放所有用户文件的<strong>根目录</strong>，是用户主目录的基点，比如用户 user 的主目录就是&#x2F;home&#x2F;user，可以用~user 表示；</li>
+<li><strong>&#x2F;usr</strong> ： 用于存放<strong>系统应用程序</strong>；</li>
+<li><strong>&#x2F;opt</strong>： <strong>额外安装的可选应用程序包所放置的位置</strong>。一般情况下，我们可以把 <code>tomcat</code> 等都安装到这里；</li>
+<li><strong>&#x2F;proc</strong>： <strong>虚拟文件系统目录</strong>，是系统内存的映射。可直接访问这个目录来获取系统信息；</li>
+<li><strong>&#x2F;root</strong>： 超级用户（系统管理员）的<strong>主目录</strong>（特权阶级o）；</li>
+<li><strong>&#x2F;sbin</strong>: 存放<strong>二进制可执行文件</strong>，只有 root 才能访问。这里存放的是系统管理员使用的<strong>系统级别</strong>的管理命令和程序。如 ifconfig 等；</li>
+<li><strong>&#x2F;dev</strong>： 用于存放<strong>设备文件</strong>；</li>
+<li><strong>&#x2F;mnt</strong>： 系统管理员安装<strong>临时文件系统的安装点</strong>，系统提供这个目录是让用户临时挂载其他的文件系统；</li>
+<li><strong>&#x2F;boot</strong>： 存放用于<strong>系统引导</strong>时使用的各种文件；</li>
+<li><strong>&#x2F;lib</strong> ： 存放着和系统运行相关的<strong>库文件</strong> ；</li>
+<li><strong>&#x2F;tmp</strong>： 用于存放各种<strong>临时文件</strong>，是公用的临时文件存储点；</li>
+<li><strong>&#x2F;var</strong>： 用于存放运行时需要改变数据的文件，也是某些大文件的溢出区，比方说各种服务的<strong>日志文件</strong>（系统启动日志等。）等；</li>
+<li><strong>&#x2F;lost+found</strong>： 这个目录平时是空的，系统非正常关机而留下“<strong>无家可归</strong>”的文件（windows 下叫什么.chk）就在这里。<h1 id="4-Linux-基本命令"><a href="#4-Linux-基本命令" class="headerlink" title="4. Linux 基本命令"></a>4. Linux 基本命令</h1>Linux 命令大全：<a target="_blank" rel="noopener" href="http://man.linuxde.net/">http://man.linuxde.net/</a><h2 id="1-目录切换命令"><a href="#1-目录切换命令" class="headerlink" title="1. 目录切换命令"></a>1. 目录切换命令</h2></li>
+<li><code>cd usr</code>： 切换到该目录下 usr 目录</li>
+<li><code>cd ..</code>（或<code>cd../</code>）： 切换到上一层目录</li>
+<li><code>cd /</code>： 切换到系统根目录</li>
+<li><code>cd ~</code>： 切换到用户主目录</li>
+<li><code>cd -</code>： 切换到上一个操作所在目录<h2 id="2-目录的操作命令-增删改查"><a href="#2-目录的操作命令-增删改查" class="headerlink" title="2. 目录的操作命令(增删改查)"></a>2. 目录的操作命令(增删改查)</h2></li>
+<li><code>mkdir</code> 目录名称：<strong>增加目录</strong>。</li>
+<li><code>ls/ll</code>：<strong>查看目录</strong>信息</li>
+<li><code>find</code> 目录 参数：<strong>寻找目录</strong>（查）。<code>find /home -name &quot;*.txt&quot;</code></li>
+<li><code>mv</code> 目录名称 新目录名称：<strong>修改目录</strong>的名称（改）。</li>
+<li><code>mv</code> 目录名称 目录的新位置：<strong>移动目录</strong>的位置—剪切（改）。</li>
+<li><code>cp -r</code> 目录名称 目录拷贝的目标位置： <strong>拷贝目录</strong>（改），<code>-r</code> 代表递归拷贝 。</li>
+<li><code>rm [-rf]</code> 目录 : <strong>删除目录</strong>（删）。<h2 id="3-文件的操作命令-增删改查"><a href="#3-文件的操作命令-增删改查" class="headerlink" title="3. 文件的操作命令(增删改查)"></a>3. 文件的操作命令(增删改查)</h2></li>
+<li><code>touch</code> 文件名称: 文件的创建（增）。</li>
+<li><code>cat/more/less/tail</code> 文件名称 ：文件的查看（查） 。<br>(命令 <code>tail -f</code> 文件 可以对某个文件进行动态监控，例如 <code>tomcat</code> 的日志文件， 会随着程序的运行，日志会变化，可以使用 <code>tail -f catalina-2016-11-11.log</code> 监控 文 件的变化 。)</li>
+<li><code>vim</code> 文件： 修改文件的内容（改）。<br>(<code>vim</code> 文件——&gt;进入文件—–&gt;命令模式——&gt;按i进入编辑模式—–&gt;编辑文件 ——-&gt;按Esc进入底行模式—–&gt;输入：<code>wq/q!</code> （输入 <code>wq</code> 代表写入内容并退出，即保存；输入 <code>q!</code> 代表强制退出不保存）。)</li>
+<li><code>rm -rf</code> 文件： 删除文件（删）。<h2 id="4-压缩文件的操作命令"><a href="#4-压缩文件的操作命令" class="headerlink" title="4. 压缩文件的操作命令"></a>4. 压缩文件的操作命令</h2></li>
+</ul>
+<p>1）打包并压缩文件：</p>
+<ul>
+<li><code>tar -zcvf 打包压缩后的文件名 要打包压缩的文件</code>：其中：<br>z：调用 gzip 压缩命令进行压缩<br>c：打包文件<br>v：显示运行过程<br>f：指定文件名<br>（<code>tar -zcvf test.tar.gz aaa.txt bbb.txt ccc.txt</code> 或 <code>tar -zcvf test.tar.gz /test/</code>）</li>
+</ul>
+<p>2）解压压缩包：</p>
+<ul>
+<li><code>tar [-xvf] 压缩文件</code>：其中：x：代表解压<br>将 &#x2F;test 下的 test.tar.gz 解压到当前目录下可以使用命令：<code>tar -xvf test.tar.gz</code><br>将 &#x2F;test 下的 test.tar.gz 解压到根目录&#x2F;usr 下：<code>tar -xvf test.tar.gz -C /usr</code>（- C 代表指定解压的位置）<h1 id="5-Linux-的权限命令"><a href="#5-Linux-的权限命令" class="headerlink" title="5. Linux 的权限命令"></a>5. Linux 的权限命令</h1>读(readable)、写(writable)和执行(excutable)<br><img src="https://img-blog.csdnimg.cn/50169f139bee48869794f45ef421cebd.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_14,color_FFFFFF,t_70,g_se,x_16" alt="rwx"><br><img src="https://img-blog.csdnimg.cn/6e4db7ca44f24a45b112d38004bfe011.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_11,color_FFFFFF,t_70,g_se,x_16" alt="rwx"><br><strong>文件的类型：</strong></li>
+<li>d： 代表目录</li>
+<li>-： 代表文件</li>
+<li>l： 代表软链接（可以认为是 window 中的快捷方式）<br><strong>Linux 中权限分为以下几种：</strong></li>
+<li>r：代表权限是可读，r 也可以用数字 4 表示</li>
+<li>w：代表权限是可写，w 也可以用数字 2 表示</li>
+<li>x：代表权限是可执行，x 也可以用数字 1 表示<br><strong>文件和目录权限的区别：</strong></li>
+</ul>
+<p><strong>对于文件：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">权限名称</th>
+<th align="center">可执行操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">r</td>
+<td align="center">可以使用 cat 查看文件的内容</td>
+</tr>
+<tr>
+<td align="center">w</td>
+<td align="center">可以修改文件的内容</td>
+</tr>
+<tr>
+<td align="center">x</td>
+<td align="center">可以将其运行为二进制文件</td>
+</tr>
+</tbody></table>
+<p><strong>对于目录：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">权限名称</th>
+<th align="center">可执行操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">r</td>
+<td align="center">可以查看目录下列表</td>
+</tr>
+<tr>
+<td align="center">w</td>
+<td align="center">可以创建和删除目录下文件</td>
+</tr>
+<tr>
+<td align="center">x</td>
+<td align="center">可以使用 cd 进入目录</td>
+</tr>
+</tbody></table>
+<p><strong>修改文件&#x2F;目录的权限的命令：<code>chmod</code></strong><br><code>chmod u=rwx,g=rw,o=r aaa.txt</code> 或者 <code>chmod 764 aaa.txt</code><br><img src="https://img-blog.csdnimg.cn/3049319da5a7497994e9aa7720d80f89.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_12,color_FFFFFF,t_70,g_se,x_16" alt="chmod"><br><strong>补充比较常用</strong><br>假如我们装了一个 zookeeper，我们每次开机到要求其自动启动该怎么办？</p>
+<ol>
+<li>新建一个脚本 <code>zookeeper</code></li>
+<li>为新建的脚本 <code>zookeeper</code> 添加可执行权限，命令是: <code>chmod +x zookeeper</code></li>
+<li>把 <code>zookeeper</code> 这个脚本添加到开机启动项里面，命令是：<code>chkconfig --add zookeeper</code></li>
+<li>如果想看看是否添加成功，命令是：<code>chkconfig --list</code><h1 id="6-Linux-用户管理"><a href="#6-Linux-用户管理" class="headerlink" title="6. Linux 用户管理"></a>6. Linux 用户管理</h1><code>Linux</code> 用户管理相关命令:</li>
+</ol>
+<p><code>useradd</code> 选项 用户名：添加用户账号<br><code>userdel</code> 选项 用户名：删除用户帐号<br><code>usermod</code> 选项 用户名：修改帐号<br><code>passwd</code> 用户名：更改或创建用户的密码<br><code>passwd -S</code> 用户名：显示用户账号密码信息<br><code>passwd -d</code> 用户名：清除用户密码</p>
+<h1 id="7-Linux-系统用户组的管理"><a href="#7-Linux-系统用户组的管理" class="headerlink" title="7. Linux 系统用户组的管理"></a>7. Linux 系统用户组的管理</h1><p><code>Linux</code> 系统用户组的管理相关命令：<br><code>groupadd</code> 选项 用户组：增加一个新的用户组<br><code>groupdel</code> 用户组：要删除一个已有的用户组<br><code>groupmod</code> 选项 用户组：修改用户组的属性</p>
+<h1 id="8-其他常用命令"><a href="#8-其他常用命令" class="headerlink" title="8. 其他常用命令"></a>8. 其他常用命令</h1><ul>
+<li><p><code>pwd</code>： 显示当前所在位置</p>
+</li>
+<li><p><code>sudo + 其他命令</code>：以系统管理者的身份执行指令，也就是说，经由 <code>sudo</code> 所执行的指令就好像是 <code>root</code> 亲自执行。</p>
+</li>
+<li><p><code>grep</code> 要搜索的字符串 要搜索的文件 <code>--color</code>：搜索命令，<code>--color</code> 代表高亮显示</p>
+</li>
+<li><p><code>ps -ef/ps -aux</code>： 这两个命令都是查看当前系统正在运行进程，两者的区别是展示格式不同。如果想要查看特定的进程可以使用这样的格式：<code>ps aux|grep redis</code> （查看包括 <code>redis</code> 字符串的进程），也可使用 <code>pgrep redis -a</code>。<br>注意：如果直接用 <code>ps</code>（（Process Status））命令，会显示所有进程的状态，通常结合 grep 命令查看某进程的状态。</p>
+</li>
+<li><p><code>kill -9</code> 进程的pid： 杀死进程（<code>-9</code> 表示强制终止。）<br>先用 <code>ps</code> 查找进程，然后用 <code>kill</code> 杀掉</p>
+</li>
+<li><p><strong>网络通信命令：</strong></p>
+<ul>
+<li>查看当前系统的网卡信息：<code>ifconfig</code></li>
+<li>查看与某台机器的连接情况：<code>ping</code></li>
+<li>查看当前系统的端口使用：<code>netstat -an</code></li>
+<li><code>net-tools</code> 和 <code>iproute2</code>：配置网络功能的工具</li>
+<li><code>shutdown</code>：<code>shutdown -h now</code>： 指定现在立即关机；<code>shutdown +5</code> “System will shutdown after 5 minutes”：指定 5 分钟后关机，同时送出警告信息给登入用户。</li>
+<li><code>reboot</code>：<code>reboot</code>： 重开机。<code>reboot -w</code>： 做个重开机的模拟（只有纪录并不会真的重开机）。<h1 id="Shell-编程入门"><a href="#Shell-编程入门" class="headerlink" title="Shell 编程入门"></a>Shell 编程入门</h1><code>Shell</code> 是一个命令解释器，解释执行用户所输入的命令和程序。一输入命令，就立即回应的交互的对话方式。<br>Shell编程就是对一堆Linux命令的逻辑化处理<br>(1) 新建一个文件 <code>helloworld.sh :touch helloworld.sh</code>，扩展名为 <code>sh</code>（<code>sh</code> 代表 <code>Shell</code> ）（扩展名并不影响脚本执行，见名知意就好，如果你用 <code>php</code> 写 <code>shell</code> 脚本，扩展名就用 <code>php</code> 好了）<br>(2) 使脚本具有执行权限：<code>chmod +x helloworld.sh</code><br>(3) 使用 <code>vim</code> 命令修改 <code>helloworld.sh</code> 文件：<code>vim helloworld.sh</code> (vim 文件——&gt;进入文件—–&gt;命令模式——&gt;按i进入编辑模式—–&gt;编辑文件 ——-&gt;按Esc进入底行模式—–&gt;输入：<code>wq/q!</code> （输入 <code>wq</code> 代表写入内容并退出，即保存；输入 <code>q!</code> 代表强制退出不保存。）)<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line"><span class="comment">#!开始来指定使用的 shell 类型</span></span><br><span class="line"><span class="comment">#第一个shell小程序,echo 是linux中的输出命令。</span></span><br><span class="line"><span class="built_in">echo</span>  <span class="string">&quot;helloworld!&quot;</span></span><br></pre></td></tr></table></figure>
+(4) 运行脚本：<code>./helloworld.sh</code> 。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>本文档为个人方便自己熟记而整理，来自javaguide。<br>javaguide是个优秀的计算机知识整理：<a target="_blank" rel="noopener" href="https://javaguide.cn/">https://javaguide.cn/</a></p>
+<p><img src="https://img-blog.csdnimg.cn/4343a2825df947a3bd6ef4e4df66720f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_20,color_FFFFFF,t_70,g_se,x_16" alt="公主"></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">衣羊干洗</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2022/03/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/">http://example.com/2022/03/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">衣羊干洗</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                    <span class="chip bg-color">操作系统</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2022/03/10/JAVA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="JAVA基础知识笔记">
+                        
+                        <span class="card-title">JAVA基础知识笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-10
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JAVASE/" class="post-category">
+                                    JAVASE
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JAVA/">
+                        <span class="chip bg-color">JAVA</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/02/27/Java%E5%AE%B9%E5%99%A8%E3%80%81%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%81JVM/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Java容器、并发编程、JVM">
+                        
+                        <span class="card-title">Java容器、并发编程、JVM</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JAVASE/" class="post-category">
+                                    JAVASE
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JAVA/">
+                        <span class="chip bg-color">JAVA</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2022</span>
+            
+            <a href="/about" target="_blank">衣羊干洗</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://blog.csdn.net/qq_39493185" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN: https://blog.csdn.net/qq_39493185" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">CSDN</i>
+    </a>
+
+
+
+
+    <a href="mailto:1426964415@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1426964415" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1426964415" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+    <a href="https://www.zhihu.com/people/dian-zi-feng-zhuang-ji-zhu-luo-liang-a1" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/dian-zi-feng-zhuang-ji-zhu-luo-liang-a1" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,1477 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Java容器、并发编程、JVM, 衣羊干洗">
+    <meta name="description" content="集合1. Java 集合概览Java 集合， 也叫作容器，主要是由两大接口：Collection 接口：存放单一元素；（三个子接口：List、Set 和 Queue。）Map 接口：存放键值对。
+2. List, Set, Queue, M">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    
+
+    <title>Java容器、并发编程、JVM | 衣羊干洗</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">衣羊干洗</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">衣羊干洗</div>
+        <div class="logo-desc">
+            
+            选择比努力更重要
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Java容器、并发编程、JVM</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/JAVA/">
+                                <span class="chip bg-color">JAVA</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/JAVASE/" class="post-category">
+                                JAVASE
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-02-27
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><h2 id="1-Java-集合概览"><a href="#1-Java-集合概览" class="headerlink" title="1. Java 集合概览"></a>1. Java 集合概览</h2><p>Java <strong>集合</strong>， 也叫作<strong>容器</strong>，主要是由<strong>两大接口</strong>：<br><code>Collection</code> 接口：存放<strong>单一元素</strong>；（三个子接口：<code>List</code>、<code>Set</code> 和 <code>Queue</code>。）<br><code>Map</code> 接口：存放<strong>键值对</strong>。<br><img src="https://img-blog.csdnimg.cn/96963fb73ed54e699fd6e747fb1db77b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_20,color_FFFFFF,t_70,g_se,x_16" alt="集合"></p>
+<h2 id="2-List-Set-Queue-Map-四者的区别？"><a href="#2-List-Set-Queue-Map-四者的区别？" class="headerlink" title="2. List, Set, Queue, Map 四者的区别？"></a>2. List, Set, Queue, Map 四者的区别？</h2><p><code>List</code>：存储的元素是<strong>有序</strong>的、<strong>可重复</strong>的。<br><code>Set</code>：存储的元素是<strong>无序</strong>的、<strong>不可重复</strong>的。<br><code>Queue</code>：按特定的排队规则来确定先后顺序（<strong>链式存储</strong>），存储的元素是<strong>有序的</strong>、<strong>可重复</strong>的。<br><code>Map</code>：使用<strong>键值对</strong>（key-value）存储，类似于数学上的函数 y&#x3D;f(x)，”x” 代表 key，”y” 代表 value，<strong>key</strong> 是<strong>无序的、不可重复</strong>的，<strong>value</strong> 是<strong>无序的、可重复</strong>的，每个键最多映射到一个值。</p>
+<h2 id="3-集合框架底层数据结构总结"><a href="#3-集合框架底层数据结构总结" class="headerlink" title="3. 集合框架底层数据结构总结"></a>3. 集合框架底层数据结构总结</h2><p>先来看一下 Collection 接口下面的集合。</p>
+<ol>
+<li><p><code>List</code><br><code>Arraylist</code>： <code>Object[]</code> 数组<br><code>Vector</code>：<code>Object[]</code> 数组<br><code>LinkedList</code>： 双向链表(JDK1.6 之前为循环链表，JDK1.7 取消了循环)</p>
+</li>
+<li><p><code>Set</code><br><code>HashSet</code>(无序，唯一): 基于 <code>HashMap</code> 实现的，底层采用 <code>HashMap</code> 来保存元素<br><code>LinkedHashSet</code>: <code>LinkedHashSet</code> 是 <code>HashSet</code> 的子类，并且其内部是通过 <code>LinkedHashMap</code> 来实现的。有点类似于我们之前说的 <code>LinkedHashMap</code> 其内部是基于 <code>HashMap</code> 实现一样，不过还是有一点点区别的<br><code>TreeSet</code>(有序，唯一): 红黑树（自平衡的排序二叉树）</p>
+</li>
+<li><p><code>Queue</code><br><code>PriorityQueue</code>：<code>Object[]</code> 数组来实现二叉堆<br><code>ArrayQueue</code>：<code>Object[]</code> 数组 + 双指针</p>
+</li>
+<li><p><code>Map</code><br><code>HashMap</code>：由<strong>数组</strong> + <strong>双链表</strong>组成，数组是 <code>HashMap</code> 的主体，链表则是主要为了解决<strong>哈希冲突</strong>而存在的（“拉链法”解决冲突）JDK1.8 以后当链表长度大于阈值（默认为 8）时，将<strong>链表转化为红黑树</strong>，以<strong>减少搜索时间</strong>。<br><code>LinkedHashMap</code>：由<strong>数组</strong> + <strong>双链表&#x2F;红黑树</strong>组成，继承自 <code>HashMap</code>，底层仍然是基于<strong>拉链式散列结构</strong>即由数组和链表或红黑树组成。区别在于增加了一条双向链表（链操作），使得上面的结构可以保持键值对的插入顺序。<br><code>Hashtable</code>： <strong>数组</strong>（主体）+ <strong>单链表</strong>（解决哈希冲突）组成。<br><code>TreeMap</code>：红黑树（自平衡的排序二叉树）</p>
+<h2 id="4-如何选用集合"><a href="#4-如何选用集合" class="headerlink" title="4. 如何选用集合?"></a>4. 如何选用集合?</h2></li>
+<li><p>根据键值获取到元素值时：<code>Map</code><br><code>TreeMap</code>：需要排序时<br><code>HashMap</code>：不需要排序时<br><code>ConcurrentHashMap</code>：线程安全</p>
+</li>
+<li><p>只需要存放元素值时：<code>Collection</code><br><code>TreeSet</code> 或 <code>HashSet</code>：保证元素唯一   <code>Set</code><br><code>ArrayList</code> 或 <code>LinkedList</code>：不需要保证唯一  <code>List</code></p>
+<h2 id="5-为什么要使用集合？"><a href="#5-为什么要使用集合？" class="headerlink" title="5. 为什么要使用集合？"></a>5. 为什么要使用集合？</h2><p>保存一组类型相同的数据时，需用一个容器保存，这个容器就是数组，但是实际开发中，存储的数据的类型是多种多样的，于是，就出现了“集合”，集合同样也是用来存储多个数据的。<br><strong>数组的缺点</strong>：① 一旦声明之后，<strong>长度不可变</strong>；② 声明数组时的<strong>数据类型</strong>也决定了该数组存储的数据的类型；③ 数组存储的数据是<strong>有序的、可重复</strong>的，特点<strong>单一</strong>。<br>集合提高了数据存储的灵活性，Java 集合不仅可以用来 <strong>① 存储不同类型不同数量的对象</strong>，还可以保 <strong>② 存具有映射关系</strong>的数据。</p>
+<h1 id="Collection-子接口之-List"><a href="#Collection-子接口之-List" class="headerlink" title="Collection 子接口之 List"></a>Collection 子接口之 List</h1><h2 id="1-Arraylist-和-Vector-的区别？"><a href="#1-Arraylist-和-Vector-的区别？" class="headerlink" title="1. Arraylist 和 Vector 的区别？"></a>1. Arraylist 和 Vector 的区别？</h2><p>底层使用 <strong><code>Object[ ]</code></strong> 数组 存储<br><code>ArrayList</code> (主要实现类)：适用于<strong>频繁查找</strong>工作，<strong>线程不安全</strong>；<br><code>Vector</code> ：<strong>线程安全</strong>。</p>
+<h2 id="2-Arraylist-与-LinkedList-区别？"><a href="#2-Arraylist-与-LinkedList-区别？" class="headerlink" title="2. Arraylist 与 LinkedList 区别？"></a>2. Arraylist 与 LinkedList 区别？</h2></li>
+<li><p>是否保证<strong>线程安全</strong>：都是不同步（不保证线程安全）</p>
+</li>
+<li><p><strong>底层数据结构</strong>：<code>Arraylist</code> 底层是 <code>Object[ ]</code>， <code>LinkedList</code> 底层是 <code>Object[ ]</code> 和 <strong>双向链表</strong>。</p>
+</li>
+<li><p><strong>插入和删除是否受元素位置的影响</strong>：<br><code>Arraylist</code>：采用数组存储，顺序存储。元素追加到列表末尾O(1)，插入或删除O(n-i)<br><code>LinkedList</code>：采用链表存储，链式存储。在头尾插入或者删除元素O(1)，指定位置O(n)。</p>
+</li>
+<li><p>快速<strong>随机访问</strong>：顺序存储支持（索引），链式不支持（遍历）。</p>
+</li>
+<li><p><strong>内存空间</strong>占用：<code>Arraylist</code> 列表的结尾会预留一定的容量空间（数组，磁盘碎片）。<code>LinkedList</code> 占用更大（存放前驱后继及数据）</p>
+<h2 id="3-ArrayList-的扩容机制"><a href="#3-ArrayList-的扩容机制" class="headerlink" title="3. ArrayList 的扩容机制"></a>3. ArrayList 的扩容机制</h2></li>
+</ol>
+<ul>
+<li>以无参数构造方法创建 <code>ArrayList</code> 时，<strong>实际上初始化赋值的是一个空数组</strong>。当真正对数组进行添加元素操作时，才真正分配容量。即向数组中添加第一个元素时，数组容量扩为 10。</li>
+<li>添加第2、3···到第 10 个元素时，依然不会执行 grow 方法，数组容量都为 10。</li>
+<li>直到<strong>添加第 11 个元素</strong>，<code>minCapacity</code>(为 11)比 <code>elementData.length</code>（为 10）要大。进入 grow 方法进行扩容。<h1 id="Collection-子接口之-Set"><a href="#Collection-子接口之-Set" class="headerlink" title="Collection 子接口之 Set"></a>Collection 子接口之 Set</h1><h2 id="1-comparable-和-Comparator-的区别？"><a href="#1-comparable-和-Comparator-的区别？" class="headerlink" title="1. comparable 和 Comparator 的区别？"></a>1. comparable 和 Comparator 的区别？</h2><code>comparable</code> 接口（java.lang）：<code>compareTo(Object obj)</code> 方法排序<br><code>comparator</code> 接口（java.util）：<code>compare(Object obj1, Object obj2)</code> 方法排序<br>一般我们需要对一个集合使用自定义排序时，我们就要重写 <code>compareTo()</code> 方法或 <code>compare()</code> 方法<h2 id="2-无序性和不可重复性的含义是什么？"><a href="#2-无序性和不可重复性的含义是什么？" class="headerlink" title="2. 无序性和不可重复性的含义是什么？"></a>2. 无序性和不可重复性的含义是什么？</h2></li>
+<li><strong>无序性</strong>：指存储的数据在底层数组中<strong>并非</strong>按照数组 <strong>索引</strong> 的顺序添加 ，而是根据数据的 <strong>哈希值</strong> 决定的。</li>
+<li><strong>不可重复性</strong>：指添加的元素按照 <code>equals()</code> 判断时 ，返回 <code>false</code>（需要同时重写 <code>equals()</code> 方法和 <code>HashCode()</code>方法）<h2 id="3-HashSet、LinkedHashSet-和-TreeSet-三者的异同"><a href="#3-HashSet、LinkedHashSet-和-TreeSet-三者的异同" class="headerlink" title="3. HashSet、LinkedHashSet 和 TreeSet 三者的异同"></a>3. HashSet、LinkedHashSet 和 TreeSet 三者的异同</h2> <strong>同</strong>：① 都是 <code>Set</code> 接口的实现类，② 都能保证元素唯一，并且③ 都不是线程安全的。<br><strong>异</strong>：① 底层数据结构不同。</li>
+<li><code>HashSet</code>：<strong>哈希表</strong>（基于 HashMap 实现）</li>
+<li><code>LinkedHashSet</code>：<strong>哈希表</strong> 和 <strong>双向链表</strong>（FIFO）。</li>
+<li><code>TreeSet</code>：<strong>哈希表</strong> 和 <strong>红黑树</strong>。元素是有序的，排序的方式有自然排序和定制排序。<br>② 底层数据结构不同又导致这三者的应用场景不同。</li>
+<li><code>HashSet</code>：<strong>不需要保证</strong>元素插入和取出<strong>顺序场景</strong>。</li>
+<li><code>LinkedHashSet</code>：<strong>保证</strong>元素的插入和取出顺序满足FIFO。</li>
+<li><code>TreeSet</code>：支持对元素<strong>自定义排序</strong>规则。<h1 id="Collection-子接口之-Queue"><a href="#Collection-子接口之-Queue" class="headerlink" title="Collection 子接口之 Queue"></a>Collection 子接口之 Queue</h1><h2 id="1-Queue-与-Deque-的区别"><a href="#1-Queue-与-Deque-的区别" class="headerlink" title="1. Queue 与 Deque 的区别"></a>1. <code>Queue</code> 与 <code>Deque</code> 的区别</h2><code>Queue</code>：单端队列，单端插入或删除元素，先进先出（FIFO）<br><code>Deque</code>：双端队列，双端插入或删除元素。<h2 id="2-ArrayDeque-与-LinkedList-的区别"><a href="#2-ArrayDeque-与-LinkedList-的区别" class="headerlink" title="2. ArrayDeque 与 LinkedList 的区别"></a>2. ArrayDeque 与 LinkedList 的区别</h2><strong>同</strong>：都实现了 <code>Deque</code> 接口，两者都具有队列的功能<br><strong>异</strong>：</li>
+<li><code>ArrayDeque</code> 是基于可变长的数组和双指针来实现，而 <code>LinkedList</code> 则通过链表来实现。</li>
+<li><code>ArrayDeque</code> 不支持存储 NULL 数据，但 <code>LinkedList</code> 支持。</li>
+<li><code>ArrayDeque</code> 插入时可能存在扩容过程, 不过均摊后的插入操作依然为 O(1)。虽然 <code>LinkedList</code> 不需要扩容，但是每次插入数据时均需要申请新的堆空间，均摊性能相比更慢。</li>
+<li><code>ArrayDeque</code> 来实现队列要比 <code>LinkedList</code> 性能更好。还能实现栈。<h2 id="3-PriorityQueue"><a href="#3-PriorityQueue" class="headerlink" title="3. PriorityQueue"></a>3. PriorityQueue</h2>JDK1.5 中引入, 其与 Queue 的区别在于元素<strong>出队顺序是与优先级相关</strong>，即总是优先级最高的元素先出队。</li>
+<li><code>PriorityQueue</code> 利用了<strong>二叉堆</strong>的数据结构来实现的，底层使用可变长的数组来存储数据。</li>
+<li><code>PriorityQueue</code> 通过<strong>堆元素的上浮和下沉</strong>，实现了在 <code>O(logn)</code> 的时间复杂度内插入元素和删除堆顶元素。</li>
+<li><code>PriorityQueue</code> 是<strong>非线程安全</strong>的，且不支持存储 NULL 和 non-comparable 的对象。</li>
+<li><code>PriorityQueue</code> 默认是<strong>小顶堆</strong>，但可以接收一个 <code>Comparator</code> 作为<strong>构造参数</strong>，从而来自定义元素优先级的先后。<h1 id="Map-接口"><a href="#Map-接口" class="headerlink" title="Map 接口"></a>Map 接口</h1><h2 id="1-HashMap-和-Hashtable-的区别"><a href="#1-HashMap-和-Hashtable-的区别" class="headerlink" title="1. HashMap 和 Hashtable 的区别"></a>1. HashMap 和 Hashtable 的区别</h2></li>
+</ul>
+<ol>
+<li><strong>线程是否安全</strong>： <code>HashMap</code> 是<strong>非线程安全</strong>的，<code>Hashtable</code> 是<strong>线程安全</strong>的（内部的方法基本都经过<code>synchronized</code> 修饰）。（如果你要保证线程安全的话就使用 <code>ConcurrentHashMap</code> 吧！）；</li>
+<li><strong>效率</strong>：<code>HashMap</code> （<strong>线程非安全</strong>）要比 <code>Hashtable</code> （基本淘汰）效率高一点。</li>
+<li><strong>对 Null key 和 Null value 的支持</strong>： <code>HashMap</code> 可以存储 <code>null</code> 的 <code>key</code> (1个)和 <code>value</code> (多个)</li>
+<li><strong>初始容量</strong>大小和每次<strong>扩充容量</strong>大小的不同：<code>HashMap</code> 会将其扩充为 2 的幂次方大小，<code>Hashtable</code> 扩充 2n+1。</li>
+<li><strong>底层数据结构</strong>：<code>HashMap</code> 在解决哈希冲突时当链表长度大于阈值（默认为 8）时，将<strong>链表</strong>转化为<strong>红黑树</strong>，以减少搜索时间。<h2 id="2-HashMap-和-HashSet-区别"><a href="#2-HashMap-和-HashSet-区别" class="headerlink" title="2. HashMap 和 HashSet 区别"></a>2. HashMap 和 HashSet 区别</h2><code>HashSet</code> 底层基于 <code>HashMap</code> 实现。<table>
+<thead>
+<tr>
+<th>HashMap</th>
+<th>HashSet</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>实现 <code>Map</code> 接口</td>
+<td>实现 <code>Set</code> 接口</td>
+</tr>
+<tr>
+<td>存储键值对</td>
+<td>仅存储对象</td>
+</tr>
+<tr>
+<td>调用 <code>put()</code>向 <code>map</code> 中添加元素</td>
+<td>调用 <code>add()</code>方法向 <code>Set</code> 中添加元素</td>
+</tr>
+<tr>
+<td><code>HashMap</code> 使用键（Key）计算 <code>hashcode</code></td>
+<td><code>HashSet</code> 使用成员对象来计算 <code>hashcode</code> 值，对于两个对象来说 <code>hashcode</code> 可能相同，所以<code>equals()</code>方法用来判断对象的相等性</td>
+</tr>
+</tbody></table>
+<h2 id="3-HashMap-和-TreeMap-区别"><a href="#3-HashMap-和-TreeMap-区别" class="headerlink" title="3. HashMap 和 TreeMap 区别"></a>3. HashMap 和 TreeMap 区别</h2><code>TreeMap</code> 和 <code>HashMap</code> 都继承自 <code>AbstractMap</code> ，但是需要注意的是 <code>TreeMap</code> 它还实现了 <code>NavigableMap</code> 接口和<code>SortedMap</code> 接口。<br><code>NavigableMap</code> 接口：让 TreeMap 有了对集合内元素的<strong>搜索能力</strong>。<br><code>SortedMap</code> 接口：让 TreeMap 有了对集合中的元素根据<strong>键排序能力</strong>。<h2 id="4-HashSet-如何检查重复"><a href="#4-HashSet-如何检查重复" class="headerlink" title="4. HashSet 如何检查重复"></a>4. HashSet 如何检查重复</h2>对象加入<code>HashSet</code> 时，<code>HashSet</code> 会先计算<strong>对象的 <code>hashcode</code> 值</strong>来判断对象加入的位置，同时也会与其他加入的对象的 <code>hashcode</code> 值作比较.</li>
+</ol>
+<ul>
+<li>如果没有相符的 <code>hashcode</code>，<code>HashSet</code> 会假设对象没有重复出现。</li>
+<li>如果发现有相同 <code>hashcode</code> 值的对象，这时会调用<code>equals()</code> 方法来检查 <code>hashcode</code> 相等的对象是否真的相同。</li>
+<li>如果两者相同，<code>HashSet</code> 就不会让加入操作成功。<h2 id="5-HashMap-的底层实现"><a href="#5-HashMap-的底层实现" class="headerlink" title="5. HashMap 的底层实现"></a>5. HashMap 的底层实现</h2>JDK1.8 之前 HashMap 底层：数组和<strong>链表</strong>（链表散列）（哈希冲突用拉链法。）<br>JDK1.8 之后 HashMap 底层：数组和<strong>链表&#x2F;红黑树</strong>（当链表长度大于阈值（默认为 8）时，将链表转化为红黑树，以减少搜索时间。）<h2 id="6-HashMap-的长度为什么是-2-的幂次方？"><a href="#6-HashMap-的长度为什么是-2-的幂次方？" class="headerlink" title="6. HashMap 的长度为什么是 2 的幂次方？"></a>6. HashMap 的长度为什么是 2 的幂次方？</h2>存放的位置（对应的数组下标，存放松散防冲突）计算方法是：<code> hash &amp; (n - 1)</code><br><code>hash%length==hash&amp;(length-1)</code>  前提是 <code>length = 2^n</code>。二进制位操作效率更好。<h2 id="7-HashMap-多线程操作导致死循环问题"><a href="#7-HashMap-多线程操作导致死循环问题" class="headerlink" title="7. HashMap 多线程操作导致死循环问题"></a>7. HashMap 多线程操作导致死循环问题</h2>并发下的 <code>Rehash</code> 会造成元素之间会形成一个循环链表。<br>多线程下使用 <code>HashMap</code> 还是会存在其他问题比如数据丢失。<br>（并发环境下推荐使用 <code>ConcurrentHashMap</code> ）。<h2 id="8-ConcurrentHashMap-和-Hashtable-的区别"><a href="#8-ConcurrentHashMap-和-Hashtable-的区别" class="headerlink" title="8. ConcurrentHashMap 和 Hashtable 的区别"></a>8. ConcurrentHashMap 和 Hashtable 的区别</h2>主要体现在：实现<strong>线程安全的方式</strong>上</li>
+<li><strong>底层数据结构</strong>：JDK1.7 的 ConcurrentHashMap 底层采用 分段的数组+链表 实现，<br>JDK1.8 采用的数据结构跟 HashMap1.8 的结构一样，数组+链表&#x2F;红黑二叉树。</li>
+<li><strong>实现线程安全的方式</strong>：<br>① 在 JDK1.7 的时候，**<code>ConcurrentHashMap</code>（分段锁）** 对整个数组进行了分割分段(<code>Segment</code>)，每一把锁只锁容器其中一部分数据，多线程访问容器里不同数据段的数据，就不会存在锁竞争，提高并发访问率。到了 JDK1.8 的时候已经摒弃了 <code>Segment</code> 的概念，而是直接用 <strong>Node 数组+链表+红黑树</strong>的数据结构来实现，<strong>并发控制使用 <code>synchronized</code> 和 CAS 来操作</strong>。<br>② **Hashtable(同一把锁)**：使用 <code>synchronized</code> 来保证线程安全，效率非常低下。当一个线程访问同步方法时，其他线程也访问同步方法，可能会进入阻塞或轮询状态，如使用 <code>put</code> 添加元素，另一个线程不能使用 <code>put</code> 添加元素，也不能使用 <code>get</code>，竞争会越来越激烈效率越低。<h2 id="9-Collections-工具类"><a href="#9-Collections-工具类" class="headerlink" title="9. Collections 工具类"></a>9. Collections 工具类</h2><code>Collections</code> 工具类常用方法：</li>
+</ul>
+<ol>
+<li>排序<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="title function_">reverse</span><span class="params">(List list)</span><span class="comment">//反转</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">shuffle</span><span class="params">(List list)</span><span class="comment">//随机排序</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(List list)</span><span class="comment">//按自然排序的升序排序</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(List list, Comparator c)</span><span class="comment">//定制排序，由Comparator控制排序逻辑</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(List list, <span class="type">int</span> i , <span class="type">int</span> j)</span><span class="comment">//交换两个索引位置的元素</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">rotate</span><span class="params">(List list, <span class="type">int</span> distance)</span><span class="comment">//旋转。当distance为正数时，将list后distance个元素整体移到前面。当distance为负数时，将 list的前distance个元素整体移到后面</span></span><br></pre></td></tr></table></figure></li>
+<li>查找,替换操作<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">binarySearch</span><span class="params">(List list, Object key)</span><span class="comment">//对List进行二分查找，返回索引，注意List必须是有序的</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">max</span><span class="params">(Collection coll)</span><span class="comment">//根据元素的自然顺序，返回最大的元素。 类比int min(Collection coll)</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">max</span><span class="params">(Collection coll, Comparator c)</span><span class="comment">//根据定制排序，返回最大元素，排序规则由Comparatator类控制。类比int min(Collection coll, Comparator c)</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">fill</span><span class="params">(List list, Object obj)</span><span class="comment">//用指定的元素代替指定list中的所有元素</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">frequency</span><span class="params">(Collection c, Object o)</span><span class="comment">//统计元素出现次数</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">indexOfSubList</span><span class="params">(List list, List target)</span><span class="comment">//统计target在list中第一次出现的索引，找不到则返回-1，类比int lastIndexOfSubList(List source, list target)</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">replaceAll</span><span class="params">(List list, Object oldVal, Object newVal)</span><span class="comment">//用新元素替换旧元素</span></span><br></pre></td></tr></table></figure></li>
+<li>同步控制(不推荐，需要线程安全的集合类型时请考虑使用 JUC 包下的并发集合)<br><code>Collections</code> 提供了多个 <code>synchronizedXxx()</code> 方法·，该方法可以将指定集合包装成<strong>线程同步的集合</strong>，从而解决多线程并发访问集合时的线程安全问题。<h1 id="并发编程"><a href="#并发编程" class="headerlink" title="并发编程"></a>并发编程</h1><h2 id="1-什么是进程和线程？"><a href="#1-什么是进程和线程？" class="headerlink" title="1.什么是进程和线程？"></a>1.什么是进程和线程？</h2></li>
+</ol>
+<ul>
+<li><strong>进程</strong>：程序的一次执行过程，是系统运行程序的基本单位，因此进程是动态的。<br>系统运行一个程序即是一个进程从创建，运行到消亡的过程。<br>main 函数时其实就是启动了一个 <strong>JVM 的进程</strong>，而 main 函数所在的线程就是这个进程中的一个线程，也称主线程。</li>
+<li><strong>线程</strong>：比进程更小的执行单位。一个进程在其执行的过程中可以产生多个线程。<br><strong>一个 Java 程序的运行是 main 线程和多个其他线程同时运行。</strong><h2 id="2-图解进程和线程的关系"><a href="#2-图解进程和线程的关系" class="headerlink" title="2. 图解进程和线程的关系"></a>2. 图解进程和线程的关系</h2><img src="https://img-blog.csdnimg.cn/45dc885022424d1fa0fed75edf2161ea.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_15,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>一个进程中可以有多个线程，<strong>多个线程共享进程的堆和方法区</strong> (JDK1.8 之后的元空间)资源，但是每个线程有自己的<strong>程序计数器、虚拟机栈 和 本地方法栈</strong>。<br><strong>总结</strong>： 线程是进程划分成的更小的运行单位。线程和进程最大的不同在于基本上<strong>各进程是独立的</strong>，而各线程则不一定，因为<strong>同一进程中的线程极有可能会相互影响</strong>。线程执行开销小（轻量级进程），但不利于资源的管理和保护；而进程正相反。<h2 id="3-程序计数器为什么是私有的"><a href="#3-程序计数器为什么是私有的" class="headerlink" title="3. 程序计数器为什么是私有的?"></a>3. 程序计数器为什么是私有的?</h2>程序计数器私有主要是为了：<strong>线程切换后能恢复到正确的执行位置</strong></li>
+</ul>
+<ol>
+<li>字节码解释器通过改变程序计数器来<strong>依次读取指令</strong>，从而实现代码的流程控制，如：顺序执行、选择、循环、异常处理。</li>
+<li>在多线程的情况下，程序计数器用于<strong>记录当前线程执行的位置</strong>，从而当线程被切换回来的时候能够知道该线程上次运行到哪儿了。<br>（如果执行的是 <code>native</code> 方法，那么程序计数器记录的是 <code>undefined</code> 地址。只有执行的是 Java 代码时程序计数器记录的才是下一条指令的地址。）<h2 id="4-虚拟机栈和本地方法栈为什么是私有的"><a href="#4-虚拟机栈和本地方法栈为什么是私有的" class="headerlink" title="4. 虚拟机栈和本地方法栈为什么是私有的?"></a>4. 虚拟机栈和本地方法栈为什么是私有的?</h2><strong>保证线程中的局部变量不被别的线程访问到</strong>。</li>
+</ol>
+<ul>
+<li><strong>虚拟机栈</strong>： 每个 Java 方法在执行的同时会创建一个栈帧用于存储<strong>局部变量表、操作数栈、常量池引用</strong>等信息。从方法调用直至执行完成的过程，就对应着一个栈帧在 Java 虚拟机栈中入栈和出栈的过程。</li>
+<li><strong>本地方法栈</strong>： 和虚拟机栈所发挥的作用非常相似，区别是： <strong>虚拟机栈</strong>为虚拟机执行 <strong>Java 方法</strong> （也就是字节码）服务，而<strong>本地方法栈</strong>则为虚拟机使用到的 <strong><code>Native</code> 方法服务</strong>。 在 HotSpot 虚拟机中和 Java 虚拟机栈合二为一。<h2 id="5-一句话简单了解堆和方法区"><a href="#5-一句话简单了解堆和方法区" class="headerlink" title="5. 一句话简单了解堆和方法区"></a>5. 一句话简单了解堆和方法区</h2>堆和方法区是所有线程共享的资源.</li>
+<li><strong>堆</strong>是进程中最大的一块内存，主要用于<strong>存放新创建的对象</strong> (几乎所有对象都在这里分配内存).</li>
+<li><strong>方法区</strong>主要用于存放<strong>已被加载的类信息、常量、静态变量、即时编译器编译后的代码</strong>等数据。<h2 id="6-并发与并行的区别？"><a href="#6-并发与并行的区别？" class="headerlink" title="6. 并发与并行的区别？"></a>6. 并发与并行的区别？</h2></li>
+<li><strong>并发</strong>：两个及两个以上的作业在 <strong>单位时间段</strong> 内执行。</li>
+<li><strong>并行</strong>：两个及两个以上的作业在 <strong>单位时间</strong> 执行。<h2 id="7-为什么要使用多线程呢"><a href="#7-为什么要使用多线程呢" class="headerlink" title="7. 为什么要使用多线程呢?"></a>7. 为什么要使用多线程呢?</h2></li>
+<li><strong>计算机底层</strong>：线程是轻量级进程，线程间的<strong>切换和调度的成本</strong>远远小于进程。</li>
+<li><strong>互联网发展</strong>（千万级的高并发量）：提高系统整体的<strong>并发能力</strong>以及性能</li>
+<li><strong>单核时代</strong>：使用多线程的时候，一个线程被 IO 阻塞，其他线程还可以继续使用 CPU。从而<strong>提高了 Java 进程利用系统资源的整体效率</strong>。</li>
+<li><strong>多核时代</strong>：提高进程利用多核 CPU 的能力。<h2 id="8-使用多线程可能带来什么问题？"><a href="#8-使用多线程可能带来什么问题？" class="headerlink" title="8. 使用多线程可能带来什么问题？"></a>8. 使用多线程可能带来什么问题？</h2>并发编程的目的就是为了能<strong>提高程序的执行效率</strong>提高程序运行速度，但是并发编程并不总是能提高程序运行速度的，而且并发编程可能会遇到很多问题，比如：<strong>内存泄漏、死锁、线程不安全</strong>等等。<h2 id="9-说说线程的生命周期和状态？"><a href="#9-说说线程的生命周期和状态？" class="headerlink" title="9. 说说线程的生命周期和状态？"></a>9. 说说线程的生命周期和状态？</h2></li>
+<li>线程创建之后它将处于 <strong>NEW（新建） 状态</strong>，调用 <code>start()</code> 方法后开始运行，线程这时候处于 <strong>READY（可运行）</strong> 状态。可运行状态的线程获得了 CPU 时间片（timeslice）后就处于 <strong>RUNNING（运行）</strong> 状态。</li>
+<li>当线程执行 <code>wait()</code>方法之后，线程进入 <strong>WAITING（等待）</strong> 状态。进入等待状态的线程需要依靠其他线程的通知才能够返回到运行状态，而 <strong>TIMED_WAITING(超时等待)</strong> 状态相当于在等待状态的基础上增加了超时限制，比如通过 <code>sleep（long millis）</code>方法或 <code>wait（long millis）</code>方法可以将 Java 线程置于 <strong>TIMED_WAITING</strong> 状态。当超时时间到达后 Java 线程将会返回到 <strong>RUNNABLE 状态</strong>。当线程调用同步方法时，在<strong>没有获取到锁</strong>的情况下，线程将会进入到 <strong>BLOCKED（阻塞）</strong> 状态。线程在执行 <strong>Runnable</strong> 的 <code>run()</code> 方法之后将会进入到 <strong>TERMINATED（终止）</strong> 状态。<h2 id="10-什么是上下文切换？"><a href="#10-什么是上下文切换？" class="headerlink" title="10. 什么是上下文切换？"></a>10. 什么是上下文切换？</h2><strong>上下文</strong>：线程在执行过程中会有自己的运行条件和状态（程序计数器，栈信息等）。<br>当出现如下情况的时候，线程会从占用 CPU 状态中退出：</li>
+</ul>
+<ol>
+<li>主动让出 CPU，比如调用了 sleep(), wait() 等。</li>
+<li>时间片用完，因为操作系统要防止一个线程或者进程长时间占用CPU导致其他线程或者进程饿死。</li>
+<li>调用了阻塞类型的系统中断，比如请求 IO，线程被阻塞。</li>
+<li>被终止或结束运行<br><strong>上下文切换</strong>：前三种都会发生<strong>线程切换</strong>，<strong>需要保存当前线程的上下文</strong>，留待线程下次占用 CPU 的时候<strong>恢复</strong>现场。（频繁切换就会造成整体效率低下）<h2 id="11-什么是线程死锁？如何避免死锁？"><a href="#11-什么是线程死锁？如何避免死锁？" class="headerlink" title="11. 什么是线程死锁？如何避免死锁？"></a>11. 什么是线程死锁？如何避免死锁？</h2><strong>线程死锁</strong>：多个线程同时被阻塞，它们中的一个或者全部都在等待某个资源被释放。（线程被无限期地阻塞，因此程序不可能正常终止）<br><img src="https://img-blog.csdnimg.cn/de3f739176be410f92f5e043c22be726.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_8,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><strong>死锁的四个必要条件：</strong></li>
+<li><strong>互斥</strong>条件：该资源任意一个时刻只由一个线程占用。（一次性申请所有的资源）</li>
+<li><strong>请求与保持</strong>条件：一个线程因请求资源而阻塞时，对已获得的资源保持不放。</li>
+<li><strong>不剥夺条件</strong>：线程已获得的资源在未使用完之前不能被其他线程强行剥夺，只有自己使用完毕后才释放资源。（占用部分资源的线程进一步申请其他资源时，如果申请不到，可以主动释放它占有的资源）</li>
+<li><strong>循环等待</strong>条件：若干线程之间形成一种头尾相接的循环等待资源关系。（靠按序申请资源来预防。按某一顺序申请资源，释放资源则反序释放。）</li>
+</ol>
+<p><strong>避免死锁</strong>：在资源分配时，借助于算法（比如银行家算法）对资源分配进行计算评估，使其进入安全状态。</p>
+<h2 id="12-说说-sleep-方法和-wait-方法区别和共同点"><a href="#12-说说-sleep-方法和-wait-方法区别和共同点" class="headerlink" title="12. 说说 sleep() 方法和 wait() 方法区别和共同点?"></a>12. 说说 sleep() 方法和 wait() 方法区别和共同点?</h2><ul>
+<li><strong>同</strong>：两者都可以暂停线程的执行。</li>
+<li><strong>异</strong>：</li>
+</ul>
+<ol>
+<li><code>sleep()</code> 方法没有释放锁，而 <code>wait()</code> 方法释放了锁 。</li>
+<li><code>wait()</code> 通常被用于<strong>线程间交互&#x2F;通信</strong>，<code>sleep()</code> 通常被用于<strong>暂停执行</strong>。</li>
+<li><code>wait()</code> 方法被调用后，线程不会自动苏醒，需要别的线程调用同一个对象上的 <code>notify()</code> 或者 <code>notifyAll()</code> 方法。<code>sleep()</code> 方法执行完成后，线程会自动苏醒。或者可以使用 <code>wait(long timeout)</code> 超时后线程会自动苏醒。<h2 id="13-为什么我们调用-start-方法时会执行-run-方法，为什么我们不能直接调用-run-方法？"><a href="#13-为什么我们调用-start-方法时会执行-run-方法，为什么我们不能直接调用-run-方法？" class="headerlink" title="13. 为什么我们调用 start() 方法时会执行 run() 方法，为什么我们不能直接调用 run() 方法？"></a>13. 为什么我们调用 start() 方法时会执行 run() 方法，为什么我们不能直接调用 run() 方法？</h2></li>
+</ol>
+<ul>
+<li><code>new</code> 一个 <code>Thread</code>，线程进入了新建状态。调用 <code>start()</code> 方法，会启动一个线程并使线程进入了<strong>就绪状态</strong>，当分配到<strong>时间片</strong>后就可以开始运行了。 <strong><code>start()</code> 会执行线程的相应准备工作，然后自动执行 <code>run() </code>方法的内容</strong>，这是真正的多线程工作。</li>
+<li>直接执行 <code>run()</code> 方法，会把 <code>run()</code> 方法当成一个 <code>main</code> 线程下的普通方法去执行，并不会在某个线程中执行它，所以这并不是多线程工作。<br><strong>总结</strong>：调用 <code>start()</code> 方法方可<strong>启动线程并使线程进入就绪状态</strong>，直接执行 <code>run()</code> 方法的话不会以多线程的方式执行。<h1 id="Java-并发常见知识点-amp-面试题总结（进阶篇）"><a href="#Java-并发常见知识点-amp-面试题总结（进阶篇）" class="headerlink" title="Java 并发常见知识点&amp;面试题总结（进阶篇）"></a>Java 并发常见知识点&amp;面试题总结（进阶篇）</h1><h2 id="1-synchronized-关键字"><a href="#1-synchronized-关键字" class="headerlink" title="1. synchronized 关键字"></a>1. synchronized 关键字</h2><strong>解决的是</strong>：多个线程之间访问资源的<strong>同步性</strong>。保证被它修饰的方法或者代码块在任意时刻<strong>只能有一个线程</strong>执行。<br>Java 早期版本中，<code>synchronized</code> 属于 <strong>重量级锁</strong>，效率低下。<br>监视器锁（monitor）是依赖于底层的操作系统的 <code>Mutex Lock</code>（互斥锁）来实现的，Java的线程是映射到操作系统的原生线程之上的。如果要挂起或者唤醒一个线程，<strong>都需要操作系统帮忙完成</strong>，而操作系统实现<strong>线程之间的切换时需要从用户态转换到内核态</strong>，需要相对比较长的时间，时间成本相对较高。<br>JDK1.6 对锁的实现引入了大量的优化，如<strong>自旋锁、适应性自旋锁、锁消除、锁粗化、偏向锁、轻量级锁</strong>等技术来<strong>减少锁操作的开销</strong>。<h2 id="2-说说自己是怎么使用-synchronized-关键字"><a href="#2-说说自己是怎么使用-synchronized-关键字" class="headerlink" title="2. 说说自己是怎么使用 synchronized 关键字"></a>2. 说说自己是怎么使用 synchronized 关键字</h2></li>
+</ul>
+<ol>
+<li><code>synchronized</code> 关键字加到 <code>static</code> <strong>静态方法</strong>和<code> synchronized(class)</code> <strong>代码块</strong>上都是是给 <strong><code>Class</code> 类</strong>上锁。</li>
+<li><code>synchronized</code> 关键字加到<strong>实例方法</strong>上是给<strong>对象实例</strong>上锁。（差别）</li>
+<li>尽量不要使用 <code>synchronized(String a)</code> 因为 JVM 中，字符串常量池具有缓存功能！<h2 id="3-构造方法可以使用-synchronized-关键字修饰么？"><a href="#3-构造方法可以使用-synchronized-关键字修饰么？" class="headerlink" title="3. 构造方法可以使用 synchronized 关键字修饰么？"></a>3. 构造方法可以使用 synchronized 关键字修饰么？</h2>不能。<strong>构造方法</strong>本身就属于<strong>线程安全</strong>的，不存在同步的构造方法一说。<h2 id="4-讲一下-synchronized-关键字的底层原理"><a href="#4-讲一下-synchronized-关键字的底层原理" class="headerlink" title="4. 讲一下 synchronized 关键字的底层原理"></a>4. 讲一下 synchronized 关键字的底层原理</h2></li>
+<li><code>synchronized</code> 同步语句块的实现使用的是 <code>monitorenter</code> 和 <code>monitorexit</code> 指令，其中 <code>monitorenter</code> 指令指向同步代码块的开始位置，<code>monitorexit</code> 指令则指明同步代码块的结束位置。</li>
+<li><code>synchronized</code> 修饰的方法<strong>并没有 <code>monitorenter</code> 指令和 <code>monitorexit</code> 指令</strong>，取得代之的确实是 <code>ACC_SYNCHRONIZED</code> 标识，该标识指明了该方法是一个同步方法。</li>
+</ol>
+<p>执行 <code>monitorenter</code> 指令时，线程试图<strong>获取锁</strong>也就是<strong>获取 对象监视器 monitor 的持有权</strong>（两者本质）</p>
+<ul>
+<li>在执行 <code>monitorenter</code> 时，会尝试<strong>获取对象的锁</strong>，如果锁的计数器为 0 则表示<strong>锁可被获取</strong>，获取后将锁计数器b 也就是加 1。</li>
+<li>对象锁的的拥有者线程才可以执行 <code>monitorexit</code> 指令来<strong>释放锁</strong>。在执行 monitorexit 指令后，将锁计数器<strong>设为 0</strong>，表明锁被释放，其他线程可以尝试获取锁。</li>
+<li>如果获取对象锁失败，那当前线程就要阻塞等待，直到锁被另外一个线程释放为止。<h2 id="5-JDK1-6-之后的-synchronized-关键字底层做了哪些优化，可以详细介绍一下这些优化吗？"><a href="#5-JDK1-6-之后的-synchronized-关键字底层做了哪些优化，可以详细介绍一下这些优化吗？" class="headerlink" title="5.  JDK1.6 之后的 synchronized 关键字底层做了哪些优化，可以详细介绍一下这些优化吗？"></a>5.  JDK1.6 之后的 synchronized 关键字底层做了哪些优化，可以详细介绍一下这些优化吗？</h2>JDK1.6 对锁的实现引入了大量的优化，如<strong>偏向锁、轻量级锁、自旋锁、适应性自旋锁、锁消除、锁粗化</strong>等技术来<strong>减少锁操作的开销</strong>。<br>锁主要存在四种状态，依次是：<strong>无锁</strong>状态、<strong>偏向锁</strong>状态、<strong>轻量级锁</strong>状态、<strong>重量级锁</strong>状态，他们会随着竞争的激烈而逐渐升级。注意<strong>锁可升级不可降级</strong>，这种策略是为了<strong>提高获得锁和释放锁的效率</strong>。<h2 id="6-synchronized（同步锁）和-ReentrantLock（重入锁）的区别"><a href="#6-synchronized（同步锁）和-ReentrantLock（重入锁）的区别" class="headerlink" title="6. synchronized（同步锁）和 ReentrantLock（重入锁）的区别"></a>6. synchronized（同步锁）和 ReentrantLock（重入锁）的区别</h2></li>
+</ul>
+<ol>
+<li>两者都是可重入锁</li>
+<li><code>synchronized</code> 依赖于 <strong>JVM</strong>，<code>ReentrantLock</code> 依赖于 <strong>API</strong></li>
+<li><code>ReentrantLock</code> 比 <code>synchronized</code> 增加了一些高级功能：</li>
+</ol>
+<ul>
+<li><strong>等待可中断</strong> : <code>ReentrantLock</code>提供了一种能够中断等待锁的线程的机制，通过 <code>lock.lockInterruptibly()</code> 来实现这个机制。也就是说正在等待的线程可以选择放弃等待，改为处理其他事情。</li>
+<li><strong>可实现公平锁</strong> : <code>ReentrantLock</code>可以指定是公平锁还是非公平锁。而 <code>synchronized</code> 只能是非公平锁。所谓的公平锁就是<strong>先等待的线程先获得锁</strong>。<code>ReentrantLock</code> 默认情况是非公平的，可以通过 <code>ReentrantLock</code> 类的<code>ReentrantLock(boolean fair)</code> 构造方法来制定是否是公平的。</li>
+<li><strong>可实现选择性通知</strong>（锁可以绑定多个条件）：<code>synchronized</code> 关键字与<code> wait()</code> 和<code>notify()/notifyAll()</code> 方法相结合可以实现<strong>等待&#x2F;通知机制</strong>。<code>ReentrantLock</code> 类当然也可以实现，但是需要借助于<code>Condition</code> 接口与 <code>newCondition()</code> 方法。<h1 id="volatile-不同步的-关键字"><a href="#volatile-不同步的-关键字" class="headerlink" title="volatile(不同步的) 关键字"></a>volatile(不同步的) 关键字</h1><h2 id="1-CPU-缓存模型"><a href="#1-CPU-缓存模型" class="headerlink" title="1. CPU 缓存模型"></a>1. CPU 缓存模型</h2><strong>CPU Cache 缓存</strong>的是内存数据用于解决 <strong>CPU 处理速度和内存不匹配的问题</strong>，<strong>内存缓存</strong>的是硬盘数据用于解决<strong>硬盘访问速度过慢</strong>的问题。<br>我们甚至可以把<strong>内存可以看作外存的高速缓存</strong>，程序运行的时候我们把外存的数据复制到内存，由于内存的处理速度远远高于外存，这样提高了处理速度。<br><strong>CPU Cache 的工作方式：</strong><br>先复制一份数据到 CPU Cache 中，当 CPU 需要用到的时候就可以直接从 CPU Cache 中读取数据，当运算完成后，再将运算得到的数据写回 Main Memory(主存) 中。但是，这样存在 内存缓存不一致性的问题（制定缓存一致协议或者其他手段来解决）！<h2 id="2-讲一下-JMM-Java-内存模型-java-memory-model"><a href="#2-讲一下-JMM-Java-内存模型-java-memory-model" class="headerlink" title="2. 讲一下 JMM(Java 内存模型)(java memory model)"></a>2. 讲一下 JMM(Java 内存模型)(java memory model)</h2>Java 内存模型<strong>抽象了线程和主内存之间的关系</strong>，就比如说<strong>线程之间的共享变量必须存储在主内存中</strong>。<br>Java 内存模型主要目的：<strong>屏蔽系统和硬件的差异</strong>，避免一套代码在不同的平台下产生的效果不一致。</li>
+</ul>
+<p>在 JDK1.2 之前，Java 的内存模型实现总是从<strong>主存</strong>（即共享内存）读取变量，是不需要进行特别的注意的。而在当前的 Java 内存模型下，线程可以把变量保存<strong>本地内存</strong>（比如机器的寄存器）中，而不是直接在主存中进行读写。这就可能造成<strong>一个</strong>线程<strong>在主存中修改了一个变量的值</strong>，而<strong>另一个</strong>线程还继续使用它在<strong>寄存器中的变量值的拷贝</strong>，造成数据的不一致。</p>
+<ul>
+<li><strong>主内存</strong>：所有线程创建的<strong>实例对象</strong>都存放在主内存中，不管该实例对象是成员变量还是方法中的本地变量(也称局部变量)</li>
+<li><strong>本地内存</strong>：每个线程都有一个私有的本地内存来存储共享变量的副本，并且，<strong>每个线程只能访问自己的本地内存</strong>，无法访问其他线程的本地内存。本地内存是 JMM 抽象出来的一个概念，<strong>存储了主内存中的共享变量副本</strong>。</li>
+</ul>
+<p><strong>解决</strong>：把变量声明为 <code>volatile</code> ，这就指示 JVM，这个变量是<strong>共享且不稳定</strong>的，每次使用它<strong>都到主存</strong>中进行读取。<br><code>volatile</code> 关键字：① <strong>防止 JVM 的指令重排</strong> ，② <strong>保证变量的可见性</strong>。<br><img src="https://img-blog.csdnimg.cn/5303f4a5ce28460fa529b9183cb4ec1a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_13,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/1d19bdda5dad4eb8ab22e2815bd42094.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_18,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h2 id="3-并发编程的三个重要特性"><a href="#3-并发编程的三个重要特性" class="headerlink" title="3. 并发编程的三个重要特性"></a>3. 并发编程的三个重要特性</h2><ol>
+<li><strong>原子性</strong>：一次操作或者多次操作，要么所有的操作<strong>全部执行</strong>并且不会受到任何因素的干扰而中断，要么<strong>都不执行</strong>。<code>synchronized</code> 可以保证代码片段的原子性。</li>
+<li><strong>可见性</strong>：当一个线程对共享变量进行了修改，那么另外的<strong>其它线程</strong>都是立即<strong>可以看到修改后的最新值</strong>。<code>volatile</code> 关键字可以保证共享变量的可见性。</li>
+<li><strong>有序性</strong>：<strong>代码在执行的过程中的先后顺序</strong>，Java 在编译器以及运行期间的优化，代码的执行顺序未必就是编写代码时候的顺序。<code>volatile</code> 关键字可以禁止指令进行重排序优化。<h2 id="4-synchronized-关键字和-volatile-关键字的区别"><a href="#4-synchronized-关键字和-volatile-关键字的区别" class="headerlink" title="4. synchronized 关键字和 volatile 关键字的区别"></a>4. synchronized 关键字和 volatile 关键字的区别</h2><code>synchronized</code> (同步的) 关键字和 <code>volatile</code> (不同步的) 关键字是两个<strong>互补</strong>的存在。</li>
+</ol>
+<ul>
+<li><code>volatile</code> 关键字是线程同步的<strong>轻量级(s..重量级)<strong>实现，所以 <code>volatile</code> 比 <code>synchronized</code> 关键字</strong>性能要好</strong> 。但是 <code>volatile</code> 关键字只能用于<strong>变量</strong>而 <code>synchronized</code> 关键字可以修饰<strong>方法以及代码块</strong> 。</li>
+<li><code>volatile</code> 关键字能保证数据的<strong>可见性</strong>，但不能保证数据的<strong>原子性</strong>。<code>synchronized</code> 关键字两者都能保证。</li>
+<li><code>volatile</code> 关键字主要用于<strong>解决变量在多个线程之间的可见性</strong>，而 <code>synchronized</code> <strong>关键字解决多个线程之间访问资源的同步性</strong>。<h1 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h1><h2 id="1-ThreadLocal-简介"><a href="#1-ThreadLocal-简介" class="headerlink" title="1. ThreadLocal 简介"></a>1. ThreadLocal 简介</h2>实现每一个线程都有自己的专属本地变量，让每个线程绑定自己的值。<br>如果你创建了一个<code>ThreadLocal</code> 变量，那么访问这个变量的每个线程都会有这个变量的<strong>本地副本</strong>，这也是<code>ThreadLocal</code> 变量名的由来。他们可以使用 <code>get()</code> 和 <code>set()</code> 方法来获取默认值或将其值<strong>更改为当前线程所存的副本的值</strong>，从而避免了<strong>线程安全</strong>问题。<h2 id="2-ThreadLocal-原理"><a href="#2-ThreadLocal-原理" class="headerlink" title="2. ThreadLocal 原理"></a>2. ThreadLocal 原理</h2>最终的变量是放在了当前线程的 <code>ThreadLocalMap</code> 中，并不是存在 <code>ThreadLocal</code> 上，**<code>ThreadLocal</code> 可以理解为只是<code>ThreadLocalMap</code> 的封装，传递了变量值。** <code>ThrealLocal</code> 类中可以通过 <code>Thread.currentThread()</code> 获取到当前线程对象后，直接通过 <code>getMap(Thread t)</code> 可以访问到该线程的 <code>ThreadLocalMap</code> 对象。</li>
+</ul>
+<p>每个Thread中都具备一个 <code>ThreadLocalMap</code> ，而<code> ThreadLocalMap</code>可以存储以 <strong><code>ThreadLocal</code> 为 key</strong>，<strong>Object 对象为 value 的键值对</strong>。</p>
+<h2 id="3-ThreadLocal-内存泄露问题"><a href="#3-ThreadLocal-内存泄露问题" class="headerlink" title="3. ThreadLocal 内存泄露问题"></a>3. ThreadLocal 内存泄露问题</h2><p><strong>内存泄露</strong>：<code>ThreadLocalMap</code> 中使用的 key 为弱引用，而 value 是强引用。所以，如果 <code>ThreadLocal</code> 没有被外部强引用的情况下，在<strong>垃圾回收</strong>的时候，key 会被清理掉，而 value 不会被清理掉。<code>ThreadLocalMap</code> 中就会出现 key 为 <code>null</code> 的 Entry。假如我们不做任何措施的话，value 永远无法被 GC 回收，这个时候就可能会产生内存泄露。<br><code>ThreadLocalMap</code> 实现中已经考虑了这种情况，在调用 <code>set()</code>、<code>get()</code>、<code>remove()</code> 方法的时候，会清理掉 key 为 null 的记录。使用完 <code>ThreadLocal</code> 方法后 最好手动调用 <code>remove()</code> 方法。</p>
+<h1 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h1><h2 id="1-为什么要用线程池？"><a href="#1-为什么要用线程池？" class="headerlink" title="1. 为什么要用线程池？"></a>1. 为什么要用线程池？</h2><p><strong>线程池</strong>：提供了一种<strong>限制和管理资源</strong>（包括执行一个任务）的方式。 每个线程池还维护一些基本统计信息，例如已完成任务的数量。<br><strong>池化技术</strong>：减少每次获取资源的消耗，提高对资源的利用率。<br><strong>好处</strong>：</p>
+<ol>
+<li><strong>降低资源消耗</strong>。通过<strong>重复利用已创建的线程</strong>降低线程创建和销毁造成的消耗。</li>
+<li><strong>提高响应速度</strong>。当任务到达时，任务可以<strong>不需要等到线程创建就能立即执行</strong>。</li>
+<li><strong>提高线程的可管理性</strong>。线程是稀缺资源，如果无限制的创建，不仅会消耗系统资源，还会降低系统的稳定性，使用线程池可以进行<strong>统一分配、调优和监控</strong>。<h2 id="2-实现-Runnable-接口和-Callable-接口的区别"><a href="#2-实现-Runnable-接口和-Callable-接口的区别" class="headerlink" title="2. 实现 Runnable 接口和 Callable 接口的区别"></a>2. 实现 Runnable 接口和 Callable 接口的区别</h2></li>
+</ol>
+<ul>
+<li><code>Callable</code> 仅在 Java 1.5 中引入，目的就是为了来处理<code> Runnable</code> (1.0)<strong>不支持的用例</strong>。</li>
+<li><code>Runnable</code> 接口 <strong>不会返回结果或抛出检查异常</strong>，但是 <code>Callable</code> 接口 可以。</li>
+<li>工具类 <code>Executors </code> ：将 <code>Runnable</code> 对象转换成 <code>Callable</code> 对象。<br>（<code>Executors.callable(Runnable task)</code> 或 <code>Executors.callable(Runnable task, Object result)</code>）<h2 id="3-执行-execute-方法和-submit-方法的区别是什么呢？"><a href="#3-执行-execute-方法和-submit-方法的区别是什么呢？" class="headerlink" title="3. 执行 execute()方法和 submit()方法的区别是什么呢？"></a>3. 执行 execute()方法和 submit()方法的区别是什么呢？</h2></li>
+<li><code>execute()</code> 方法用于提交<strong>不需要返回值的任务</strong>，所以<strong>无法判断</strong>任务是否被线程池执行<strong>成功与否</strong>；</li>
+<li><code>submit()</code> 方法用于提交<strong>需要返回值的任务</strong>。线程池会返回一个 <code>Future</code> 类型的对象，通过这个 <code>Future</code> 对象可以判断任务是否执行成功，并且可以通过 <code>Future</code> 的 <code>get()</code> 方法来获取返回值，<code>get()</code> 方法会阻塞当前线程直到任务完成，而使用 <code>get(long timeout，TimeUnit unit)</code> 方法<strong>（超时等待）</strong>则会阻塞当前线程一段时间后立即返回，这时候有可能任务没有执行完。<h2 id="4-如何创建线程池"><a href="#4-如何创建线程池" class="headerlink" title="4. 如何创建线程池"></a>4. 如何创建线程池</h2>《阿里巴巴 Java 开发手册》中强制线程池不允许使用 <code>Executors</code> 去创建，而是通过 <code>ThreadPoolExecutor</code> 的方式，这样的处理方式让写的同学更<strong>加明确线程池的运行规则，规避资源耗尽的风险</strong>。<h2 id="5-线程池原理分析"><a href="#5-线程池原理分析" class="headerlink" title="5. 线程池原理分析"></a>5. 线程池原理分析</h2>线程池首先会先执行 5 个（**<code>corePoolSize</code>核心线程数**）任务，然后这些任务有任务被执行完的话，就会去拿新的任务执行。<br><img src="https://img-blog.csdnimg.cn/4bb194abb0144531859b9eadaad3f8f2.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_15,color_FFFFFF,t_70,g_se,x_16" alt="线程池原理"><h1 id="Atomic-原子类"><a href="#Atomic-原子类" class="headerlink" title="Atomic 原子类"></a>Atomic 原子类</h1><h2 id="1-介绍一下-Atomic-原子类"><a href="#1-介绍一下-Atomic-原子类" class="headerlink" title="1. 介绍一下 Atomic 原子类"></a>1. 介绍一下 Atomic 原子类</h2><strong>原子性</strong>：要么都执行（且不被其他线程干扰）要么都不执行。<br><strong>原子类</strong>：具有原子性的类。并发包原子类都存放在 <code>java.util.concurrent.atomic</code> <h2 id="2-JUC-包中的原子类是哪-4-类？"><a href="#2-JUC-包中的原子类是哪-4-类？" class="headerlink" title="2. JUC 包中的原子类是哪 4 类？"></a>2. JUC 包中的原子类是哪 4 类？</h2><strong>基本类型</strong>：<code>AtomicInteger</code>、<code>AtomicLong</code>、<code>AtomicBoolean</code><br><strong>数组类型</strong>：<code>AtomicIntegerArray</code>、<code>AtomicLongArray</code>、<code>AtomicReferenceArray</code><br><strong>引用类型</strong>：<code>AtomicReference</code>、<code>AtomicStampedReference</code>、<code>AtomicMarkableReference</code><br><strong>对象的属性修改类型</strong>：<code>AtomicIntegerFieldUpdater</code>、<code>AtomicLongFieldUpdater</code>、<code>AtomicReferenceFieldUpdater</code><h2 id="3-讲讲-AtomicInteger-的使用"><a href="#3-讲讲-AtomicInteger-的使用" class="headerlink" title="3. 讲讲 AtomicInteger 的使用"></a>3. 讲讲 AtomicInteger 的使用</h2><code>AtomicInteger</code> 类常用方法（使用 <code>AtomicInteger</code> 之后，不需要对该方法加锁，也可以实现线程安全。）：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="title function_">get</span><span class="params">()</span> <span class="comment">//获取当前的值</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="title function_">getAndSet</span><span class="params">(<span class="type">int</span> newValue)</span><span class="comment">//获取当前的值，并设置新的值</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="title function_">getAndIncrement</span><span class="params">()</span><span class="comment">//获取当前的值，并自增</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="title function_">getAndDecrement</span><span class="params">()</span> <span class="comment">//获取当前的值，并自减</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="title function_">getAndAdd</span><span class="params">(<span class="type">int</span> delta)</span> <span class="comment">//获取当前的值，并加上预期的值</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">compareAndSet</span><span class="params">(<span class="type">int</span> expect, <span class="type">int</span> update)</span> <span class="comment">//如果输入的数值等于预期值，则以原子方式将该值设置为输入值（update）</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title function_">lazySet</span><span class="params">(<span class="type">int</span> newValue)</span><span class="comment">//最终设置为newValue,使用 lazySet 设置之后可能导致其他线程在之后的一小段时间内还是可以读到旧的值。</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-简单介绍一下-AtomicInteger-类的原理"><a href="#4-简单介绍一下-AtomicInteger-类的原理" class="headerlink" title="4. 简单介绍一下 AtomicInteger 类的原理"></a>4. 简单介绍一下 AtomicInteger 类的原理</h2><code>AtomicInteger</code> 类主要利用 <strong><code>CAS</code>  (比较 交换)+ <code>volatile</code> （可见性）和 <code>native</code> 方法</strong>来保证原子操作，从而避免 <code>synchronized</code> 的高开销（比较），执行效率大为提升。<br>CAS：拿期望的值和原本的一个值作比较，如果相同则更新成新的值。（UnSafe 类的 <code>objectFieldOffset()</code> 方法是一个本地方法，这个方法是用来拿到“原来的值”的内存地址，返回值是 <code>valueOffset</code>。）<br>value 是一个 <code>volatile</code> 变量，在内存中可见。<br>JVM 可以保证任何时刻任何线程总能拿到该变量的最新值。</li>
+</ul>
+<h1 id="AQS-AbstractQueuedSynchronizer-抽象队列同步器"><a href="#AQS-AbstractQueuedSynchronizer-抽象队列同步器" class="headerlink" title="AQS(AbstractQueuedSynchronizer) 抽象队列同步器"></a>AQS(AbstractQueuedSynchronizer) 抽象队列同步器</h1><h2 id="1-AQS-介绍"><a href="#1-AQS-介绍" class="headerlink" title="1. AQS 介绍"></a>1. AQS 介绍</h2><p><code>java.util.concurrent.locks</code> 包下面<br>AQS 是一个<strong>用来构建锁和同步器的框架</strong>，使用 AQS 能简单且高效地构造出大量应用广泛的同步器，比如我们提到的 <code>ReentrantLock</code>，<code>Semaphore</code>，<code>ReentrantReadWriteLock</code>，<code>SynchronousQueue</code>，<code>FutureTask</code>。</p>
+<h2 id="2-AQS-原理分析"><a href="#2-AQS-原理分析" class="headerlink" title="2. AQS 原理分析"></a>2. AQS 原理分析</h2><p>AQS 核心思想是：</p>
+<ul>
+<li>如果被请求的共享资源<strong>空闲</strong>，则将<strong>当前请求资源的线程设置为有效</strong>的工作线程，并且将<strong>共享资源设置为锁定状态</strong>。</li>
+<li>如果被请求的共享资源被<strong>占用</strong>，那么就需要一套<strong>线程阻塞等待</strong>以及<strong>被唤醒时锁分配</strong>的机制（<strong>CLH 队列锁</strong>实现），即<strong>将暂时获取不到锁的线程加入到队列</strong>中。</li>
+</ul>
+<p><strong>CLH</strong>(Craig,Landin and Hagersten)队列是一个<strong>虚拟的双向队列</strong>（即不存在队列实例，仅存在<strong>结点之间的关联</strong>关系）。AQS 是将<strong>每条请求共享资源的线程</strong>封装成一个 <strong>CLH 锁队列的一个结点（Node）</strong>来实现锁的分配。<br><img src="https://img-blog.csdnimg.cn/098a08725a494f2690be307757b1c3cb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_20,color_FFFFFF,t_70,g_se,x_16" alt="CLH"></p>
+<h2 id="3-AQS-定义两种资源共享方式"><a href="#3-AQS-定义两种资源共享方式" class="headerlink" title="3. AQS 定义两种资源共享方式"></a>3. AQS 定义两种资源共享方式</h2><ol>
+<li><strong>Exclusive（独占）</strong>：只有一个线程能执行，如 <code>ReentrantLock</code>。又可分为公平锁和非公平锁：<br>公平锁：按照线程在队列中的排队顺序，先到者先拿到锁<br>非公平锁：当线程要获取锁时，无视队列顺序直接去抢锁，谁抢到就是谁的</li>
+<li><strong>Share（共享）</strong>：多个线程可同时执行，如 <code>CountDownLatch</code>、<code>Semaphore</code>、 <code>CyclicBarrier</code>、<code>ReadWriteLock</code> 我们都会在后面讲到。（<code>ReentrantReadWriteLock</code>：读写锁允许多个线程同时对某一资源进行读）</li>
+</ol>
+<h2 id="4-用过-CountDownLatch-么？什么场景下用的？"><a href="#4-用过-CountDownLatch-么？什么场景下用的？" class="headerlink" title="4. 用过 CountDownLatch 么？什么场景下用的？"></a>4. 用过 CountDownLatch 么？什么场景下用的？</h2><p><code>CountDownLatch</code> 的作用就是 <strong>允许 count 个线程阻塞在一个地方，直至所有线程的任务都执行完毕</strong>。</p>
+<h1 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h1><h1 id="Java-内存区域详解"><a href="#Java-内存区域详解" class="headerlink" title="Java 内存区域详解"></a>Java 内存区域详解</h1><p>虚拟机自动内存管理机制下，不再需要像 C&#x2F;C++程序为每一个 <code>new</code> 操作去写对应的 <code>delete/free</code> 操作，不容易出现<strong>内存泄漏</strong>和<strong>内存溢出</strong>问题。</p>
+<h2 id="1-运行时数据区域"><a href="#1-运行时数据区域" class="headerlink" title="1. 运行时数据区域"></a>1. 运行时数据区域</h2><p><img src="https://img-blog.csdnimg.cn/f132ef9902ac4c6abe8e0f3692d1f515.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_15,color_FFFFFF,t_70,g_se,x_16" alt="数据区域"><br>线程<strong>私有</strong>的：① 程序计数器；② 虚拟机栈；③ 本地方法栈。<br>线程<strong>共享</strong>的：① 堆；② 方法区；③直接内存 (非运行时数据区的一部分)</p>
+<ol>
+<li><strong>程序计数器</strong></li>
+</ol>
+<ul>
+<li>字节码解释器通过改变程序计数器来依次<strong>读取指令</strong>，从而实现代码的<strong>流程控制</strong>，如：顺序执行、选择、循环、异常处理。</li>
+<li>在多线程的情况下，程序计数器用于<strong>记录当前线程执行的位置</strong>，从而当线程被切换回来的时候能够知道该线程上次运行到哪儿了。<br>程序计数器是唯一一个不会出现 <code>OutOfMemoryError</code> 的内存区域，它的生命周期随着线程的<strong>创建&#x2F;结束而创建&#x2F;死亡</strong>。</li>
+</ul>
+<ol start="2">
+<li><strong>Java 虚拟机栈</strong></li>
+</ol>
+<ul>
+<li><strong>生命周期和线程相同</strong>，描述的是 <strong>Java 方法执行的内存模型</strong>，每次方法调用的数据都是通过<strong>栈传递</strong>的。（<strong>堆内存</strong> 和 <strong>栈内存</strong>）</li>
+<li><strong>栈帧</strong>组成，而每个栈帧中都拥有：<strong>局部变量表</strong>、<strong>操作数栈</strong>、<strong>动态链接</strong>、<strong>方法出口</strong>信息（java方法的）。</li>
+<li><strong>两种错误</strong>：<code>StackOverFlowError</code> 栈深错误  <code>OutOfMemoryError</code> 内存不足。</li>
+<li>Java 栈可以类比数据结构中栈，Java 栈中保存的主要内容是栈帧，每一次函数调用都会有一个对应的栈帧被压入 Java 栈，每一个函数调用结束后，都会有一个栈帧被弹出（释放内存空间）。</li>
+</ul>
+<ol start="3">
+<li><p><strong>本地方法栈</strong><br><strong>虚拟机栈</strong>为虚拟机执行 <strong>Java 方法</strong> （也就是字节码）服务，<br><strong>本地方法栈</strong>则为虚拟机使用到的 <strong>Native 方法</strong>服务。<br>本地方法被执行的时候，在本地方法栈也会创建一个栈帧，用于存放该<strong>本地方法的</strong>局部变量表、操作数栈、动态链接、出口信息。调用结束后，也都会有一个栈帧被弹出（释放内存空间）。</p>
+</li>
+<li><p><strong>堆</strong><br><strong>存放对象实例</strong>，几乎所有的对象实例以及数组都在这里分配内存。<br>Java 堆是<strong>垃圾收集器</strong>管理的主要区域，因此也被称作 GC 堆。<br>垃圾回收收集器基本都采用 <strong>分代垃圾收集算法</strong>。<br>Java堆可细分：新生代(Eden, Survivor)、老年代(Old) 和 永久代(1.7前)&#x2F;元空间(1.8后)。<br>JDK 8 版本之后 <code>PermGen</code>(永久代) 已被 <code>Metaspace</code>(元空间) 取代，<strong>元空间</strong>使用的是<strong>直接内存</strong>。<br>对象都会首先在 <code>Eden</code> 区域分配，在一次新生代垃圾回收后，如果对象还存活，则会进入 S0 或者 S1，并且对象的年龄还会加 1(<code>Eden</code> 区-&gt;<code>Survivor</code> 区后对象的初始年龄变为 1)，当它的年龄增加到一定程度（默认为 15 岁），就会被晋升到老年代中。<br><img src="https://img-blog.csdnimg.cn/b0fd376278be47c3ad9c3b016b898b38.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_7,color_FFFFFF,t_70,g_se,x_16" alt="Hostspot VM堆结构"></p>
+</li>
+<li><p>方法区<br>存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。</p>
+</li>
+<li><p>运行时常量池（方法区的一部分）<br>Class 文件中除了有类的版本、字段、方法、接口等描述信息外，还有常量池表（用于存放编译期生成的各种字面量和符号引用）</p>
+</li>
+<li><p>直接内存</p>
+<h2 id="3-Java-对象的创建过程（能默写）"><a href="#3-Java-对象的创建过程（能默写）" class="headerlink" title="3. Java 对象的创建过程（能默写）"></a>3. Java 对象的创建过程（能默写）</h2><p><strong>类加载检查</strong> → <strong>分配内存</strong> → <strong>初始化零值</strong> → <strong>设置对象头</strong> → <strong>执行 <code>init</code> 方法</strong></p>
+</li>
+<li><p><strong>类加载检查</strong>：<br>虚拟机遇到 <code>new</code> 指令时，首先将去检查这个指令的参数是否能在<strong>常量池中定位</strong>到这个类的符号引用，并且检查这个符号引用代表的类<strong>是否已被加载过、解析和初始化过</strong>。如果没有，那必须先执行相应的类加载过程。<br><img src="https://img-blog.csdnimg.cn/c01b6bef911742f688d61b6ad8030eff.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_18,color_FFFFFF,t_70,g_se,x_16" alt="类的生命周期"></p>
+</li>
+<li><p><strong>分配内存</strong><br>为对象分配空间的任务等同于把一块确定大小的内存从 <strong>Java 堆中</strong>划分出来。<br>内存分配的两种方式：</p>
+</li>
+</ol>
+<ul>
+<li><strong>指针碰撞</strong> ：<br><strong>适用场合</strong> ：堆内存规整（即没有内存碎片）的情况下。<br><strong>原理</strong> ：过的内存全部整合到一边，没有用过的内存放在另一边，中间有一个分界指针，只需要向着没用过的内存方向将该指针移动对象内存大小位置即可。<br><strong>使用该分配方式的 GC 收集器</strong>：Serial, ParNew</li>
+<li><strong>空闲列表</strong> ：<br><strong>适用场合</strong> ：堆内存不规整的情况下。<br><strong>原理</strong>：虚拟机会维护一个列表，该列表中会记录哪些内存块是可用的，在分配的时候，找一块儿足够大的内存块儿来划分给对象实例，最后更新列表记录。<br><strong>使用该分配方式的 GC 收集器</strong>：CMS</li>
+</ul>
+<ol start="3">
+<li><strong>初始化零值</strong><br>分配到的内存空间都初始化为零值（不包括对象头），保证了对象的实例字段在 Java 代码中可以不赋初始值就直接使用。程序访问到数据类型所对应的零值。</li>
+<li><strong>设置对象头</strong><br>信息存放（对象是哪个类的实例、如何才能找到类的元数据信息、对象的哈希码、对象的 GC 分代年龄等信息）在对象头中。</li>
+<li><strong>执行 <code>init</code> 方法</strong><br>执行 <code>new</code> 指令之后会接着执行 <code>&lt;init&gt;</code> 方法，把对象按照程序员的<strong>意愿初始化</strong>。<h2 id="4-对象的内存布局"><a href="#4-对象的内存布局" class="headerlink" title="4. 对象的内存布局"></a>4. 对象的内存布局</h2>3 块区域：<strong>对象头</strong>、<strong>实例数据</strong>和<strong>对齐填充</strong>。<br><strong>对象头</strong>：① 对象自身的运行时数据（哈希码、GC 分代年龄、锁状态标志等等） ② 类型指针。<br><strong>实例数据</strong>：对象真正存储的有效信息。<br><strong>对齐填充</strong>：仅占位作用。<h2 id="5-对象的访问定位"><a href="#5-对象的访问定位" class="headerlink" title="5. 对象的访问定位"></a>5. 对象的访问定位</h2>Java 程序通过栈上的 <code>reference</code> 数据来操作堆上的具体对象。<br>对象的访问方式由虚拟机实现而定，目前主流的访问方式有：使用<strong>句柄</strong>、<strong>直接指针</strong>。</li>
+</ol>
+<ul>
+<li><strong>句柄</strong>：Java 堆中划分出一块内存作为<strong>句柄池</strong>，**<code>reference</code> (引用)<strong>中存储的就是对象的</strong>句柄地址<strong>，而</strong>句柄<strong>中包含了对象实例数据与类型</strong>数据各自的具体地址信息**。<br>（<code>reference</code> 中存储的是稳定的句柄地址，在对象被移动时只会改变句柄中的实例数据指针，而 <code>reference</code> 本身不需要修改）</li>
+<li><strong>直接指针</strong>：<code>reference</code> 中存储的直接就是<strong>对象地址</strong>。<br>（速度快，它节省了一次指针定位的时间开销）<br><img src="https://img-blog.csdnimg.cn/11793e0d206345a3a0c0a5576beda4d3.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_20,color_FFFFFF,t_70,g_se,x_16" alt="句柄"><br><img src="https://img-blog.csdnimg.cn/1c9a2711beda4001b0f127c922ec196b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_20,color_FFFFFF,t_70,g_se,x_16" alt="直接指针"><h1 id="JVM-垃圾回收详解"><a href="#JVM-垃圾回收详解" class="headerlink" title="JVM 垃圾回收详解"></a>JVM 垃圾回收详解</h1><img src="https://img-blog.csdnimg.cn/1f5bd14c8424446c90b85fa375782f40.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_20,color_FFFFFF,t_70,g_se,x_16" alt="JVM垃圾回收"><h2 id="1-JVM-内存分配与回收"><a href="#1-JVM-内存分配与回收" class="headerlink" title="1. JVM 内存分配与回收"></a>1. JVM 内存分配与回收</h2>Java 的自动内存管理主要是针对对象内存的回收和对象内存的分配。<br>最核心的功能是 <strong>堆</strong> 内存中对象的分配与回收。<br>收集器基本都采用<strong>分代垃圾收集算法</strong>，Java 堆可细分为：<strong>新生代（Eden、From Survivor、To Survivor）和老年代</strong>。进一步划分的目的是更好地回收和分配内存。<br><img src="https://img-blog.csdnimg.cn/2927b582f1f74dbfb75363fca67eda70.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_20,color_FFFFFF,t_70,g_se,x_16" alt="JAVA堆"><br>对象都会首先在 Eden 区域分配，在一次新生代垃圾回收后，如果对象还存活，则会进入 s0 或者 s1，并且对象的年龄还会加 1(Eden 区-&gt;Survivor 区后对象的初始年龄变为 1)，当它的年龄增加到<strong>一定程度</strong>（默认为大于 15 岁），就会被晋升到老年代中。对象晋升到老年代的<strong>年龄阈值</strong>，可以通过参数 <code>-XX: MaxTenuringThreshold</code> 来设置默认值，这个值会在虚拟机运行过程中进行调整，可以通过 <code>-XX:+PrintTenuringDistribution</code> 来打印出当次 GC 后的 <code>Threshold</code>。<br>（Hotspot 遍历所有对象时，按照年龄从小到大对其所占用的大小进行累积，当累积的某个<strong>年龄大小超过了 survivor 区的一半</strong>时，取这个年龄和 <code>MaxTenuringThreshold</code> 中更小的一个值，作为新的晋升年龄阈值）<br>经过这次 GC 后，Eden 区和”From”区已经被清空。这个时候，”From”和”To”会交换他们的角色，也就是新的”To”就是上次 GC 前的“From”，新的”From”就是上次 GC 前的”To”。不管怎样，都会保证名为 To 的 Survivor 区域是空的。Minor GC 会一直重复这样的过程，在这个过程中，有可能当次 Minor GC 后，Survivor 的”From”区域空间不够用，有一些还达不到进入老年代条件的实例放不下，则放不下的部分会提前进入老年代。</li>
+</ul>
+<ol>
+<li>对象优先在 eden 区分配</li>
+<li>大对象直接进入老年代</li>
+<li>长期存活的对象将进入老年代</li>
+<li>动态对象年龄判定</li>
+<li>主要进行 gc 的区域</li>
+</ol>
+<ul>
+<li>部分收集 (Partial GC)：<ul>
+<li><strong>新生代</strong>收集（Minor GC &#x2F; Young GC）：只对新生代进行垃圾收集；<br><strong>老年代</strong>收集（Major GC &#x2F; Old GC）：只对老年代进行垃圾收集。需要注意的是 Major GC 在有的语境中也用于指代整堆收集；<br><strong>混合</strong>收集（Mixed GC）：对整个新生代和部分老年代进行垃圾收集。</li>
+</ul>
+</li>
+<li>整堆收集 (Full GC)：收集整个 Java 堆和方法区。</li>
+</ul>
+<ol start="6">
+<li>空间分配担保<br>（老年代最大可用的连续空间是否大于新生代所有对象总空间，否则再检查是否大于历次晋升到老年代对象的平均大小）</li>
+</ol>
+<h2 id="2-对象已经死亡？"><a href="#2-对象已经死亡？" class="headerlink" title="2. 对象已经死亡？"></a>2. 对象已经死亡？</h2><p>对<strong>堆垃圾回收</strong>前的第一步就是要<strong>判断哪些对象已经死亡</strong>。（即不能再被任何途径使用的对象）。</p>
+<ol>
+<li><strong>引用计数法</strong><br>给对象中添加一个引用计数器，每当有一个地方<strong>引用</strong>它，计数器就<strong>加 1</strong>；<br>当<strong>引用失效</strong>，计数器就<strong>减 1</strong>；<br>任何时候计数器<strong>为 0 的对象</strong>就是不可能再被使用的。<br>（实现简单，效率高，但是目前主流的虚拟机中并没有选择这个算法来管理内存，其最主要的原因是它<strong>很难解决对象之间相互循环引用</strong>的问题。）</li>
+<li><strong>可达性分析算法</strong><br>通过一系列的称为 “GC Roots” 的对象作为起点，从这些节点开始向下搜索，节点所走过的路径称为<strong>引用链</strong>。<br>当一个对象到 GC Roots <strong>没有任何引用链相连</strong>的话，则证明此对象是<strong>不可用的，需要被回收</strong>。<br> <img src="https://img-blog.csdnimg.cn/033ee022047b4ad1aa8cee317f4322d2.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_19,color_FFFFFF,t_70,g_se,x_16" alt="引用链	"><h2 id="3-哪些对象可以作为-GC-Roots-呢？（栈和方法区的对象，同步锁对象）"><a href="#3-哪些对象可以作为-GC-Roots-呢？（栈和方法区的对象，同步锁对象）" class="headerlink" title="3. 哪些对象可以作为 GC Roots 呢？（栈和方法区的对象，同步锁对象）"></a>3. 哪些对象可以作为 GC Roots 呢？（栈和方法区的对象，同步锁对象）</h2></li>
+</ol>
+<ul>
+<li><strong>虚拟机栈</strong>(栈帧中的本地变量表)中引用的对象</li>
+<li><strong>本地方法栈</strong>(Native 方法)中引用的对象</li>
+<li><strong>方法区</strong>中类静态属性引用的对象</li>
+<li><strong>方法区</strong>中常量引用的对象</li>
+<li>所有被<strong>同步锁</strong>持有的对象<h2 id="4-对象可以被回收，就代表一定会被回收吗？"><a href="#4-对象可以被回收，就代表一定会被回收吗？" class="headerlink" title="4. 对象可以被回收，就代表一定会被回收吗？"></a>4. 对象可以被回收，就代表一定会被回收吗？</h2>真正宣告一个对象死亡，至少要经历<strong>两次标记</strong>过程。<br>可达性分析法中不可达的对象（<strong>死缓</strong>）被<strong>第一次标记</strong>并且进行一次筛选，筛选的条件是此对象是否有必要执行 <code>finalize</code> 方法。当对象没有覆盖<code> finalize</code> 方法，或 <code>finalize</code> 方法已经被虚拟机调用过时，虚拟机将这两种情况视为没有必要执行。<br>被判定为需要执行的对象将会被放在一个队列中进行<strong>第二次标记</strong>，除非这个对象与引用链上的任何一个对象建立关联，否则就会被真的回收。<h2 id="5-再谈引用"><a href="#5-再谈引用" class="headerlink" title="5. 再谈引用"></a>5. 再谈引用</h2></li>
+<li>强引用：绝不回收</li>
+<li>软引用：内存不足才回收，否则不回收。可以和一个<strong>引用队列</strong>（ReferenceQueue）联合使用，如果软引用所引用的对象被垃圾回收，JAVA 虚拟机就会把这个软引用加入到与之关联的引用队列中。</li>
+<li>弱引用：更短暂的生命周期，一旦发现就回收（<strong>区别</strong>）。也可以联合引用队列回收。</li>
+<li>虚引用：<strong>任何时候</strong>都可能被垃圾回收。必须联合引用队列回收。</li>
+</ul>
+<p>软引用最多，软引用可以<strong>加速</strong> JVM 对垃圾内存的回收速度，可以维护系统的<strong>运行安全</strong>，<strong>防止内存溢出</strong>（OutOfMemory）等问题的产生。</p>
+<h2 id="6-如何判断一个常量是废弃常量？"><a href="#6-如何判断一个常量是废弃常量？" class="headerlink" title="6. 如何判断一个常量是废弃常量？"></a>6. 如何判断一个常量是废弃常量？</h2><p><strong>运行时常量池</strong>主要回收的是<strong>废弃的常量</strong>。<br>假如在字符串常量池中存在字符串 “abc”，如果当前没有任何 <code>String</code> 对象引用该字符串常量的话，就说明常量 “abc” 就是废弃常量，如果这时发生内存回收的话而且有必要的话，”abc” 就会被系统清理出常量池了。<br>（JDK1.8 hotspot 移除了永久代用元空间(Metaspace)取而代之, 这时候<strong>字符串常量池还在堆</strong>, <strong>运行时常量池还在方法区</strong>，只不过方法区的实现从永久代变成了元空间(Metaspace)）</p>
+<h2 id="7-如何判断一个类是无用的类？"><a href="#7-如何判断一个类是无用的类？" class="headerlink" title="7. 如何判断一个类是无用的类？"></a>7. 如何判断一个类是无用的类？</h2><p>同时满足下面 3 个条件才能算是 “无用的类” ：</p>
+<ol>
+<li>该类所有的实例都已经被回收，也就是 Java 堆中不存在该类的任何实例。</li>
+<li>加载该类的 <code>ClassLoader</code> 已经被回收。</li>
+<li>该类对应的 <code>java.lang.Class</code> 对象没有在任何地方被引用，无法在任何地方通过反射访问该类的方法。</li>
+</ol>
+<p>虚拟机可以对满足上述 3 个条件的无用类进行回收。</p>
+<h2 id="8-垃圾收集算法"><a href="#8-垃圾收集算法" class="headerlink" title="8. 垃圾收集算法"></a>8. 垃圾收集算法</h2><h3 id="1-标记-清除算法"><a href="#1-标记-清除算法" class="headerlink" title="1. 标记-清除算法"></a>1. 标记-清除算法</h3><p><img src="https://img-blog.csdnimg.cn/54baf6f0152b411db5115b514637a4a6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_20,color_FFFFFF,t_70,g_se,x_16" alt="标记清楚"></p>
+<h3 id="2-标记-复制算法"><a href="#2-标记-复制算法" class="headerlink" title="2. 标记-复制算法"></a>2. 标记-复制算法</h3><p><img src="https://img-blog.csdnimg.cn/75d8fe0f3fd0441e8c017f77ebf41188.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_20,color_FFFFFF,t_70,g_se,x_16" alt="复制"></p>
+<h3 id="3-标记-整理算法"><a href="#3-标记-整理算法" class="headerlink" title="3. 标记-整理算法"></a>3. 标记-整理算法</h3><p><img src="https://img-blog.csdnimg.cn/ecb9b5fd8da649b28b39548e4502dca5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_15,color_FFFFFF,t_70,g_se,x_16" alt="整理"></p>
+<h3 id="4-分代收集算法"><a href="#4-分代收集算法" class="headerlink" title="4. 分代收集算法"></a>4. 分代收集算法</h3><p><strong>新生代</strong>中，每次收集都会有大量对象死去，所以可以选择<strong>标记-复制</strong>算法，只需要付出少量对象的复制成本就可以完成每次垃圾收集。<br><strong>老年代</strong>的对象存活几率是比较高的，而且没有额外的空间对它进行分配担保，所以我们必须选择“<strong>标记-清除</strong>”或“<strong>标记-整理</strong>”算法进行垃圾收集。</p>
+<h2 id="9-垃圾收集器"><a href="#9-垃圾收集器" class="headerlink" title="9. 垃圾收集器"></a>9. 垃圾收集器</h2><p><img src="https://img-blog.csdnimg.cn/4a11ca99cc114040a183a4fc44765354.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_17,color_FFFFFF,t_70,g_se,x_16" alt="gc器"><br>到jdk8为止，默认的垃圾收集器是<code>Parallel Scavenge</code> 和 <code>Parallel Old</code><br>从jdk9开始，<code>G1</code>收集器成为默认的垃圾收集器 目前来看，<code>G1</code>回收器停顿时间最短而且没有明显缺点，非常适合Web应用。在jdk8中测试Web应用，堆内存6G，新生代4.5G的情况下，<code>Parallel Scavenge</code> 回收新生代停顿长达1.5秒。<code>G1</code>回收器回收同样大小的新生代只停顿0.2秒。</p>
+<hr>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>本文档为个人方便自己熟记而整理，来自javaguide。<br>javaguide是个优秀的计算机知识整理：<a target="_blank" rel="noopener" href="https://javaguide.cn/">https://javaguide.cn/</a><br><img src="https://img-blog.csdnimg.cn/e8b93aa48d3a4c4a9b434269d568b5ba.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_20,color_FFFFFF,t_70,g_se,x_16" alt="波妞"></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">衣羊干洗</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2022/02/27/Java%E5%AE%B9%E5%99%A8%E3%80%81%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%81JVM/">http://example.com/2022/02/27/Java%E5%AE%B9%E5%99%A8%E3%80%81%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%81JVM/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">衣羊干洗</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/JAVA/">
+                                    <span class="chip bg-color">JAVA</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2022/03/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="操作系统基础知识整理">
+                        
+                        <span class="card-title">操作系统基础知识整理</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-05
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/408/" class="post-category">
+                                    408
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                        <span class="chip bg-color">操作系统</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/02/02/Anaconda%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Anaconda安装及使用教程">
+                        
+                        <span class="card-title">Anaconda安装及使用教程</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    深度学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Python/">
+                        <span class="chip bg-color">Python</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2022</span>
+            
+            <a href="/about" target="_blank">衣羊干洗</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://blog.csdn.net/qq_39493185" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN: https://blog.csdn.net/qq_39493185" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">CSDN</i>
+    </a>
+
+
+
+
+    <a href="mailto:1426964415@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1426964415" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1426964415" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+    <a href="https://www.zhihu.com/people/dian-zi-feng-zhuang-ji-zhu-luo-liang-a1" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/dian-zi-feng-zhuang-ji-zhu-luo-liang-a1" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,1422 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="数据库基础知识整理, 衣羊干洗">
+    <meta name="description" content="
+1. 什么是数据库, 数据库管理系统, 数据库系统, 数据库管理员?
+数据库 : 数据库(DataBase 简称 DB)就是信息的集合或者说数据库是由数据库管理系统管理的数据的集合。
+数据库管理员 : 数据库管理员(Database Ad">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    
+
+    <title>数据库基础知识整理 | 衣羊干洗</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">衣羊干洗</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">衣羊干洗</div>
+        <div class="logo-desc">
+            
+            选择比努力更重要
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">数据库基础知识整理</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                <span class="chip bg-color">数据库</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/408/" class="post-category">
+                                408
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-04-08
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <hr>
+<h1 id="1-什么是数据库-数据库管理系统-数据库系统-数据库管理员"><a href="#1-什么是数据库-数据库管理系统-数据库系统-数据库管理员" class="headerlink" title="1. 什么是数据库, 数据库管理系统, 数据库系统, 数据库管理员?"></a>1. 什么是数据库, 数据库管理系统, 数据库系统, 数据库管理员?</h1><ol>
+<li><strong>数据库</strong> : 数据库(DataBase 简称 DB)就是信息的集合或者说数据库是由数据库管理系统管理的数据的集合。</li>
+<li><strong>数据库管理员</strong> : 数据库管理员(Database Administrator, 简称 DBA)负责全面管理和控制数据库系统。</li>
+<li><strong>数据库系统</strong> : 数据库系统(Data Base System，简称 DBS)通常由软件、数据库和数据管理员(DBA)组成。</li>
+<li><strong>数据库管理系统</strong> : 数据库管理系统(Database Management System 简称 DBMS)是一种操纵和管理数据库的大型软件，通常用于建立、使用和维护数据库。<br><img src="https://img-blog.csdnimg.cn/a708e85ac137447bb9ba340aebd9dd12.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_20,color_FFFFFF,t_70,g_se,x_16" alt="DBMS"><h1 id="2-什么是元组-码-候选码-主码-外码-主属性-非主属性？"><a href="#2-什么是元组-码-候选码-主码-外码-主属性-非主属性？" class="headerlink" title="2. 什么是元组, 码, 候选码, 主码, 外码, 主属性, 非主属性？"></a>2. 什么是元组, 码, 候选码, 主码, 外码, 主属性, 非主属性？</h1><strong>元组</strong> ： 元组（tuple）是关系数据库中的基本概念，关系是一张表，表中的每行（即数据库中的每条记录）就是一个元组，每列就是一个属性。 在二维表里，元组也称为行。<br><strong>码</strong> ：码就是能唯一标识实体的属性，对应表中的列。<br><strong>候选码</strong> ： 若关系中的某一属性或属性组的值能唯一的标识一个元组，而其任何、子集都不能再标识，则称该属性组为候选码。例如：在学生实体中，“学号”是能唯一的区分学生实体的，同时又假设“姓名”、“班级”的属性组合足以区分学生实体，那么{学号}和{姓名，班级}都是候选码。<br><strong>主码</strong> : 主码也叫主键。主码是从候选码中选出来的。 一个实体集中只能有一个主码，但可以有多个候选码。<br><strong>外码</strong> : 外码也叫外键。如果一个关系中的一个属性是另外一个关系中的主码则这个属性为外码。<br><strong>主属性</strong> ： 候选码中出现过的属性称为主属性。比如关系 工人（工号，身份证号，姓名，性别，部门）. 显然工号和身份证号都能够唯一标示这个关系，所以都是候选码。工号、身份证号这两个属性就是主属性。如果主码是一个属性组，那么属性组中的属性都是主属性。<br><strong>非主属性</strong>： 不包含在任何一个候选码中的属性称为非主属性。比如在关系——学生（学号，姓名，年龄，性别，班级）中，主码是“学号”，那么其他的“姓名”、“年龄”、“性别”、“班级”就都可以称为非主属性。<h1 id="3-主键和外键有什么区别？"><a href="#3-主键和外键有什么区别？" class="headerlink" title="3. 主键和外键有什么区别？"></a>3. 主键和外键有什么区别？</h1><strong>主键(主码)</strong> ：主键用于唯一标识一个元组，不能有重复，不允许为空。一个表只能有一个主键。<br><strong>外键(外码)</strong> ：外键用来和其他表建立联系用，外键是另一表的主键，外键是可以有重复的，可以是空值。一个表可以有多个外键。<h1 id="4-为什么不推荐使用外键与级联？"><a href="#4-为什么不推荐使用外键与级联？" class="headerlink" title="4. 为什么不推荐使用外键与级联？"></a>4. 为什么不推荐使用外键与级联？</h1></li>
+<li><strong>增加了复杂性</strong>： a. 每次做DELETE 或者UPDATE都必须考虑外键约束，会导致开发的时候很痛苦, 测试数据极为不方便; b. 外键的主从关系是定的，假如那天需求有变化，数据库中的这个字段根本不需要和其他表有关联的话就会增加很多麻烦。</li>
+<li><strong>增加了额外工作</strong>： 数据库需要增加维护外键的工作，比如当我们做一些涉及外键字段的增，删，更新操作之后，需要触发相关操作去检查，保证数据的的一致性和正确性，这样会不得不消耗资源；（个人觉得这个不是不用外键的原因，因为即使你不使用外键，你在应用层面也还是要保证的。所以，我觉得这个影响可以忽略不计。）</li>
+<li><strong>对分库分表不友好</strong> ：因为分库分表下外键是无法生效的。<br>……<h1 id="5-什么是-ER-图？"><a href="#5-什么是-ER-图？" class="headerlink" title="5. 什么是 ER 图？"></a>5. 什么是 ER 图？</h1><strong>E-R 图</strong> 也称实体-联系图(Entity Relationship Diagram)，提供了表示实体类型、属性和联系的方法，用来描述现实世界的概念模型。 它是描述现实世界关系概念模型的有效方法。 是表示概念关系模型的一种方式。<br>下图是一个学生选课的 ER 图，每个学生可以选若干门课程，同一门课程也可以被若干人选择，所以它们之间的关系是多对多（M: N）。另外，还有其他两种关系是：1 对 1（1:1）、1 对多（1: N）。<br><img src="https://img-blog.csdnimg.cn/ac84286a88c2443db005e1b72d498784.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_19,color_FFFFFF,t_70,g_se,x_16" alt="E-R"><br>我们试着将上面的 ER 图转换成数据库实际的关系模型(实际设计中，我们通常会将任课教师也作为一个实体来处理)：<br><img src="https://img-blog.csdnimg.cn/18f76f763b7e4e42984f44066d85733a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_17,color_FFFFFF,t_70,g_se,x_16" alt="ER"><h1 id="6-数据库范式了解吗？"><a href="#6-数据库范式了解吗？" class="headerlink" title="6. 数据库范式了解吗？"></a>6. 数据库范式了解吗？</h1></li>
+<li>1NF(第一范式)<br>属性（对应于表中的字段）不能再被分割，也就是这个字段只能是一个值，不能再分为多个其他的字段了。1NF 是所有关系型数据库的最基本要求 ，也就是说关系型数据库中创建的表一定满足第一范式。</li>
+<li>2NF(第二范式)<br>2NF 在 1NF 的基础之上，消除了非主属性对于码的部分函数依赖。如下图所示，展示了第一范式到第二范式的过渡。第二范式在第一范式的基础上增加了一个列，这个列称为主键，非主属性都依赖于主键。<br><img src="https://img-blog.csdnimg.cn/8ccb5bf6e0854ae7adf5cafb9780ce9d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_13,color_FFFFFF,t_70,g_se,x_16" alt="2NF"><br><strong>函数依赖</strong>（functional dependency） ：若在一张表中，在属性（或属性组）X 的值确定的情况下，必定能确定属性 Y 的值，那么就可以说 Y 函数依赖于 X，写作 X → Y。<br><strong>部分函数依赖</strong>（partial functional dependency） ：如果 X→Y，并且存在 X 的一个真子集 X0，使得 X0→Y，则称 Y 对 X 部分函数依赖。比如学生基本信息表 R 中（学号，身份证号，姓名）当然学号属性取值是唯一的，在 R 关系中，（学号，身份证号）-&gt;（姓名），（学号）-&gt;（姓名），（身份证号）-&gt;（姓名）；所以姓名部分函数依赖与（学号，身份证号）；<br><strong>完全函数依赖</strong>(Full functional dependency) ：在一个关系中，若某个非主属性数据项依赖于全部关键字称之为完全函数依赖。比如学生基本信息表 R（学号，班级，姓名）假设不同的班级学号有相同的，班级内学号不能相同，在 R 关系中，（学号，班级）-&gt;（姓名），但是（学号）-&gt;(姓名)不成立，（班级）-&gt;(姓名)不成立，所以姓名完全函数依赖与（学号，班级）；<br><strong>传递函数依赖</strong> ： 在关系模式 R(U)中，设 X，Y，Z 是 U 的不同的属性子集，如果 X 确定 Y、Y 确定 Z，且有 X 不包含 Y，Y 不确定 X，（X∪Y）∩Z&#x3D;空集合，则称 Z 传递函数依赖(transitive functional dependency) 于 X。传递函数依赖会导致数据冗余和异常。传递函数依赖的 Y 和 Z 子集往往同属于某一个事物，因此可将其合并放到一个表中。比如在关系 R(学号 , 姓名, 系名，系主任)中，学号 → 系名，系名 → 系主任，所以存在非主属性系主任对于学号的传递函数依赖。。</li>
+<li>3NF(第三范式)<br>3NF 在 2NF 的基础之上，消除了非主属性对于码的传递函数依赖 。符合 3NF 要求的数据库设计，基本上解决了数据冗余过大，插入异常，修改异常，删除异常的问题。比如在关系 R(学号 , 姓名, 系名，系主任)中，学号 → 系名，系名 → 系主任，所以存在非主属性系主任对于学号的传递函数依赖，所以该表的设计，不符合 3NF 的要求。</li>
+</ol>
+<p><strong>总结</strong>：</p>
+<ul>
+<li><code>1NF</code> ：属性不可再分。</li>
+<li><code>2NF</code> ：1NF 的基础之上，消除了非主属性对于码的部分函数依赖。</li>
+<li><code>3NF</code> ：3NF 在 2NF 的基础之上，消除了非主属性对于码的传递函数依赖 。<h1 id="7-什么是存储过程？"><a href="#7-什么是存储过程？" class="headerlink" title="7. 什么是存储过程？"></a>7. 什么是存储过程？</h1>我们可以把存储过程看成是一些 SQL 语句的集合，中间加了点逻辑控制语句。存储过程在业务比较复杂的时候是非常实用的，比如很多时候我们完成一个操作可能需要写一大串 SQL 语句，这时候我们就可以写有一个存储过程，这样也方便了我们下一次的调用。存储过程一旦调试完成通过后就能稳定运行，另外，使用存储过程比单纯 SQL 语句执行要快，因为存储过程是预编译过的。</li>
+</ul>
+<p>存储过程在互联网公司应用不多，因为存储过程难以调试和扩展，而且没有移植性，还会消耗数据库资源。</p>
+<p>阿里巴巴 Java 开发手册里要求禁止使用存储过程。<br><img src="https://img-blog.csdnimg.cn/c5834fbdf19e4b1b8bc81f81234e3388.png" alt="存储过程"></p>
+<h1 id="8-drop、delete-与-truncate-区别？"><a href="#8-drop、delete-与-truncate-区别？" class="headerlink" title="8. drop、delete 与 truncate 区别？"></a>8. drop、delete 与 truncate 区别？</h1><ol>
+<li>用法不同<br><code>drop(丢弃数据)</code>：<code>drop table 表名</code>，直接将表都删除掉，在删除表的时候使用。<br><code>truncate</code> (清空数据)：<code>truncate table 表名</code>，只删除表中的数据，再插入数据的时候自增长 id 又从 1 开始，在清空表中数据的时候使用。<br><code>delete</code>（删除数据）：<code>delete from 表名 where 列名=值</code>，删除某一行的数据，如果不加 where 子句和 <code>truncate table</code> 表名作用类似。<br> <code>truncate</code> 和 <code>delete</code> 只删除数据<strong>不删除表的结构</strong>(定义)，执行 <code>drop</code> 语句，此表的结构也会删除</li>
+<li>属于不同的数据库语言<br><code>truncate</code> 和 <code>drop</code> 属于 <code>DDL</code> (数据定义语言)语句，操作立即生效，原数据不放到 <code>rollback segment</code> 中，不能回滚，操作不触发 <code>trigger</code>。而 <code>delete</code> 语句是 <code>DML</code> (数据库操作语言)语句，这个操作会放到 <code>rollback segement</code> 中，事务提交之后才生效。</li>
+</ol>
+<ul>
+<li><code>DML</code> 语句和 <code>DDL</code> 语句区别：<ul>
+<li><code>DML</code> 是数据库操作语言（Data Manipulation Language）的缩写，是指对<strong>数据库中表记录</strong>的操作，主要包括表记录的插入（insert）、更新（update）、删除（delete）和查询（select），是开发人员日常使用最频繁的操作。</li>
+<li><code>DDL</code> （Data Definition Language）是数据定义语言的缩写，简单来说，就是对<strong>数据库内部的对象</strong>进行创建、删除、修改的操作语言。它和 DML 语言的最大区别是 DML 只是对表内部数据的操作，而不涉及到表的定义、结构的修改，更不会涉及到其他对象。DDL 语句更多的被数据库管理员（DBA）所使用，一般的开发人员很少使用。</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>执行速度不同<br><code>drop</code> &gt; <code>truncate</code> &gt; <code>delete</code></li>
+</ol>
+<h1 id="9-数据库设计通常分为哪几步？"><a href="#9-数据库设计通常分为哪几步？" class="headerlink" title="9. 数据库设计通常分为哪几步？"></a>9. 数据库设计通常分为哪几步？</h1><ol>
+<li><strong>需求</strong>分析 : 分析用户的需求，包括数据、功能和性能需求。</li>
+<li><strong>概念结构</strong>设计 : 主要采用 E-R 模型进行设计，包括画 E-R 图。</li>
+<li><strong>逻辑结构</strong>设计 : 通过将 E-R 图转换成表，实现从 E-R 模型到关系模型的转换。</li>
+<li><strong>物理结构</strong>设计 : 主要是为所设计的数据库选择合适的存储结构和存取路径。</li>
+<li><strong>数据库实施</strong> : 包括编程、测试和试运行</li>
+<li><strong>数据库的运行和维护</strong> : 系统的运行与数据库的日常维护。</li>
+</ol>
+<h1 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h1><p><strong>字符集</strong> 就是一系列字符的集合。<br>常见的字符集有 <code>ASCII</code>、<code>GB2312</code>、<code>GBK</code>、<code>GB18030</code>、<code>BIG5</code>、<code>UTF-8</code>……。<br><code>ASCII</code>：128 个字符<br><code>GB2312</code>：6700 多个汉字<br><code>GBK</code>：20000 多个汉字<br><code>GB18030</code>：最全面的汉字字符集<br><code>BIG5</code>：繁体中文<br><code>utf8</code>： utf8编码只支持1-3个字节 。<br><code>utf8mb4</code>：<code>UTF-8</code> 的完整实现，存储 emoji 符号。</p>
+<h1 id="MySQL知识点-amp-面试题总结"><a href="#MySQL知识点-amp-面试题总结" class="headerlink" title="MySQL知识点&amp;面试题总结"></a>MySQL知识点&amp;面试题总结</h1><h1 id="1-MySQL-基础"><a href="#1-MySQL-基础" class="headerlink" title="1. MySQL 基础"></a>1. MySQL 基础</h1><h2 id="1-关系型数据库介绍"><a href="#1-关系型数据库介绍" class="headerlink" title="1. 关系型数据库介绍"></a>1. 关系型数据库介绍</h2><p>关系型数据库就是一种<strong>建立在关系模型的基础上的数据库</strong>。<br><strong>关系模型</strong>表明了数据库中所存储的<strong>数据之间的联系</strong>（一对一、一对多、多对多）。<br>关系型数据库中，我们的数据都被存放在了各种表中（比如用户表），表中的每一行就存放着一条数据（比如一个用户的信息）。<br><img src="https://img-blog.csdnimg.cn/82aba4314d0f437f8f1a99d79f22e358.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_19,color_FFFFFF,t_70,g_se,x_16" alt="DB"><br>大部分关系型数据库都使用 SQL 来操作数据库中的数据。并且，大部分关系型数据库都支持事务的四大特性(ACID)。<br>（MySQL、PostgreSQL、Oracle、SQL Server、SQLite（微信本地的聊天记录的存储就是用的 SQLite））</p>
+<h1 id="2-MySQL-介绍"><a href="#2-MySQL-介绍" class="headerlink" title="2. MySQL 介绍"></a>2. MySQL 介绍</h1><p>MySQL 是一种关系型数据库，主要用于持久化存储我们的系统中的一些数据比如用户信息。</p>
+<h1 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h1><h1 id="1-存储引擎相关的命令"><a href="#1-存储引擎相关的命令" class="headerlink" title="1. 存储引擎相关的命令"></a>1. 存储引擎相关的命令</h1><p><strong>查看 MySQL 提供的所有存储引擎</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">show</span> engines;</span><br></pre></td></tr></table></figure>
+<p><code>MySQL</code> 当前默认的存储引擎是 <code>InnoDB</code>，并且在 5.7 版本所有的存储引擎中只有 <code>InnoDB</code> 是事务性存储引擎，也就是说只有 <code>InnoDB</code> 支持事务。<br><strong>查看 MySQL 当前默认的存储引擎</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">show</span> variables <span class="keyword">like</span> <span class="string">&#x27;%storage_engine%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>查看表的存储引擎</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">table</span> status <span class="keyword">like</span> &quot;table_name&quot; ;</span><br></pre></td></tr></table></figure>
+<h1 id="2-MyISAM-和-InnoDB-的区别"><a href="#2-MyISAM-和-InnoDB-的区别" class="headerlink" title="2. MyISAM 和 InnoDB 的区别"></a>2. MyISAM 和 InnoDB 的区别</h1><ol>
+<li>是否支持<strong>行级锁</strong></li>
+</ol>
+<ul>
+<li><code>MyISAM</code> 只有<strong>表级锁</strong>(table-level locking)（一锁就是锁住了整张表）</li>
+<li><code>InnoDB</code> 支持<strong>行级锁</strong>(row-level locking)和<strong>表级锁</strong>，默认为行级锁。</li>
+</ul>
+<ol start="2">
+<li>是否支持<strong>事务</strong><br><code>MyISAM</code> 不提供事务支持。<br><code>InnoDB</code> 提供事务支持，具有<strong>提交</strong>(commit)和<strong>回滚</strong>(rollback)事务的能力。</li>
+<li>是否支持<strong>外键</strong><br><code>MyISAM</code> 不支持，而 &#96;InnoDB 支持。</li>
+<li>是否支持数据库<strong>异常崩溃后的安全恢复</strong><br><code>MyISAM</code> 不支持，而 <code>InnoDB</code> 支持（依赖于 <code>redo log</code>）。</li>
+</ol>
+<h1 id="3-锁机制与-InnoDB-锁算法"><a href="#3-锁机制与-InnoDB-锁算法" class="headerlink" title="3. 锁机制与 InnoDB 锁算法"></a>3. 锁机制与 InnoDB 锁算法</h1><ul>
+<li><strong>表级锁</strong>：资源消耗也比较少，加锁快，不会出现死锁。其锁定粒度最大，触发锁冲突的概率最高，<strong>并发度最低</strong>，MyISAM 和 InnoDB 引擎都支持表级锁。</li>
+<li><strong>行级锁</strong>： 行级锁能大大减少数据库操作的冲突。其加锁粒度最小，并发度高，但加锁的开销也最大，加锁慢，会出现死锁。<br>InnoDB 存储引擎的锁的算法有三种：</li>
+<li><code>Record lock</code>：<strong>记录锁</strong>，单个行记录上的锁</li>
+<li><code>Gap lock</code>：<strong>间隙锁</strong>，锁定一个范围，不包括记录本身</li>
+<li><code>Next-key lock</code>：<code>record+gap</code> <strong>临键锁</strong>，锁定一个范围，包含记录本身<h1 id="4-查询缓存"><a href="#4-查询缓存" class="headerlink" title="4. 查询缓存"></a>4. 查询缓存</h1>执行查询语句的时候，会先查询缓存（MySQL 8.0 版本后移除）。	<br>my.cnf 加入以下配置，重启 MySQL 开启查询缓存<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">query_cache_type<span class="operator">=</span><span class="number">1</span></span><br><span class="line">query_cache_size<span class="operator">=</span><span class="number">600000</span></span><br></pre></td></tr></table></figure>
+MySQL 执行以下命令也可以开启查询缓存<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">global</span>  query_cache_type<span class="operator">=</span><span class="number">1</span>;</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span>  query_cache_size<span class="operator">=</span><span class="number">600000</span>;</span><br></pre></td></tr></table></figure>
+还可以通过 sql_cache 和 sql_no_cache 来控制某个查询语句是否需要缓存：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> sql_no_cache <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> usr;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>开启查询缓存后在同样的查询条件以及数据情况下，会直接在缓存中返回结果。</strong><br><strong>查询缓存不命中的三种情况：</strong><br>（1）因此任何两个查询在任何字符上的不同都会导致缓存不命中。<br>（2）如果查询中包含任何用户自定义函数、存储函数、用户变量、临时表、<code>MySQL</code> 库中的系统表，其查询结果也不会被缓存。<br>（3）缓存建立之后，<code>MySQL</code> 的查询缓存系统会跟踪查询中涉及的每张表，如果这些表（数据或结构）发生变化，那么和这张表相关的所有缓存数据都将失效。</p>
+<p>缓存虽然能够提升数据库的查询性能，但是缓存同时也带来了额外的开销，每次查询后都要做一次缓存操作，失效后还要销毁。 </p>
+<h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><p>事务是逻辑上的一组操作，<strong>要么都执行，要么都不执行</strong>。</p>
+<h2 id="1-何为数据库事务？"><a href="#1-何为数据库事务？" class="headerlink" title="1. 何为数据库事务？"></a>1. 何为数据库事务？</h2><p>数据库事务可以<strong>保证多个对数据库的操作（也就是 SQL 语句）构成一个逻辑上的整体</strong>。构成这个逻辑上的整体的这些数据库操作遵循：要么全部执行成功,要么全部不执行 。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 开启一个事务</span><br><span class="line"><span class="keyword">START</span> TRANSACTION;</span><br><span class="line"># 多条 <span class="keyword">SQL</span> 语句</span><br><span class="line">SQL1,SQL2...</span><br><span class="line">## 提交事务</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/c120bf0b528b42e6a7260982ec051026.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_11,color_FFFFFF,t_70,g_se,x_16" alt="sql"></p>
+<h1 id="2-何为-ACID-特性呢？"><a href="#2-何为-ACID-特性呢？" class="headerlink" title="2. 何为 ACID 特性呢？"></a>2. 何为 ACID 特性呢？</h1><p>关系型数据库（例如：MySQL、SQL Server、Oracle 等）事务都有 ACID 特性：</p>
+<ol>
+<li><strong>原子性</strong>（<code>Atomicity</code>） ： 事务是最小的执行单位，不允许分割。事务的原子性确保动作要么全部完成，要么完全不起作用；<strong>（<code>undo log</code> (回滚日志) ）</strong></li>
+<li><strong>一致性</strong>（<code>Consistency</code>）： 执行事务前后，数据保持一致，例如转账业务中，无论事务是否成功，转账者和收款人的总额应该是不变的；</li>
+<li><strong>隔离性</strong>（<code>Isolation</code>）： 并发访问数据库时，一个用户的事务不被其他事务所干扰，各并发事务之间数据库是独立的；<strong>（锁机制、<code>MVCC</code> ）</strong></li>
+<li><strong>持久性</strong>（<code>Durability</code>）： 一个事务被提交之后。它对数据库中数据的改变是持久的，即使数据库发生故障也不应该对其有任何影响。<strong>（ <code>redo log</code> (重做日志) ）</strong><h1 id="3-数据事务的实现原理呢？（以-MySQL-的-InnoDB-引擎为例）"><a href="#3-数据事务的实现原理呢？（以-MySQL-的-InnoDB-引擎为例）" class="headerlink" title="3. 数据事务的实现原理呢？（以 MySQL 的 InnoDB 引擎为例）"></a>3. 数据事务的实现原理呢？（以 MySQL 的 InnoDB 引擎为例）</h1><code>MySQL InnoDB</code> 引擎使用 <code>redo log</code> (重做日志) 保证事务的持久性，使用 <code>undo log</code> (回滚日志) 来保证事务的原子性。<br><code>MySQL InnoDB</code> 引擎通过 锁机制、<code>MVCC</code> 等手段来保证事务的隔离性（ 默认支持的隔离级别是 <code>REPEATABLE-READ</code> ）。<h1 id="4-并发事务带来哪些问题？"><a href="#4-并发事务带来哪些问题？" class="headerlink" title="4. 并发事务带来哪些问题？"></a>4. 并发事务带来哪些问题？</h1></li>
+<li><strong>脏读（Dirty read）</strong>：当一个事务正在访问数据并且对数据进行了修改，而这种修改还没有提交到数据库中，这时另外一个事务也访问了这个数据，然后使用了这个数据。</li>
+<li><strong>丢失修改（Lost to modify）</strong>：指在一个事务读取一个数据时，另外一个事务也访问了该数据，那么在第一个事务中修改了这个数据后，第二个事务也修改了这个数据。</li>
+<li><strong>不可重复读（Unrepeatable read）</strong>：指在一个事务内多次读同一数据。在这个事务还没有结束时，另一个事务也访问该数据。</li>
+<li><strong>幻读（Phantom read）</strong>：它发生在一个事务（T1）读取了几行数据，接着另一个并发事务（T2）插入了一些数据时。在随后的查询中，第一个事务（T1）就会发现多了一些原本不存在的记录，就好像发生了幻觉一样，所以称为幻读。<br><strong>不可重复读和幻读区别：</strong><br>不可重复读的重点是修改比如多次读取一条记录发现其中<strong>某些列的值被修改</strong>，幻读的重点在于<strong>新增或者删除</strong>比如多次查询同一条查询语句（DQL）时，记录发现记录增多或减少了。<h1 id="5-事务隔离级别有哪些？"><a href="#5-事务隔离级别有哪些？" class="headerlink" title="5. 事务隔离级别有哪些？"></a>5. 事务隔离级别有哪些？</h1></li>
+</ol>
+<ul>
+<li>**READ-UNCOMMITTED(读取未提交)**： 最低的隔离级别，允许读取尚未提交的数据变更，可能会导致脏读、幻读或不可重复读。</li>
+<li>**READ-COMMITTED(读取已提交)**： 允许读取并发事务已经提交的数据，可以阻止脏读，但是幻读或不可重复读仍有可能发生。</li>
+<li>**REPEATABLE-READ(可重复读)**： 对同一字段的多次读取结果都是一致的，除非数据是被本身事务自己所修改，可以阻止脏读和不可重复读，但幻读仍有可能发生。</li>
+<li>**SERIALIZABLE(可串行化)**： 最高的隔离级别，完全服从 ACID 的隔离级别。所有的事务依次逐个执行，这样事务之间就完全不可能产生干扰，也就是说，该级别可以防止脏读、不可重复读以及幻读。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">隔离级别</th>
+<th align="center">脏读</th>
+<th align="center">不可重复读</th>
+<th align="center">幻读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">READ-UNCOMMITTED</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">READ-COMMITTED</td>
+<td align="center">×</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">READ-UNCOMMITTED</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">SERIALIZABLE</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+</tr>
+</tbody></table>
+<h1 id="6-MySQL-的默认隔离级别是什么？"><a href="#6-MySQL-的默认隔离级别是什么？" class="headerlink" title="6. MySQL 的默认隔离级别是什么？"></a>6. MySQL 的默认隔离级别是什么？</h1><p><code>MySQL InnoDB</code> 存储引擎的默认支持的隔离级别是 <strong><code>REPEATABLE-READ</code>（可重读）</strong>。<br>并不保证避免幻读，需要应用使用加锁读来保证。而这个加锁读使用到的机制就是 <code>Next-Key Locks</code> （<code>record+gap 临键锁</code>，锁定一个范围，包含记录本身）。</p>
+<p>因为隔离级别越低，事务请求的锁越少，所以大部分数据库系统的隔离级别都是 <code>READ-COMMITTED</code> (读取提交内容) ，但是你要知道的是 InnoDB 存储引擎默认使用 <code>REPEATABLE-READ</code>（可重读） 并不会有任何性能损失。</p>
+<h1 id="Redis-知识点-amp-面试题总结"><a href="#Redis-知识点-amp-面试题总结" class="headerlink" title="Redis 知识点&amp;面试题总结"></a>Redis 知识点&amp;面试题总结</h1><h1 id="1-简单介绍一下-Redis"><a href="#1-简单介绍一下-Redis" class="headerlink" title="1. 简单介绍一下 Redis"></a>1. 简单介绍一下 Redis</h1><p> C 语言开发的数据库；存在内存中的 ，也就是它是内存数据库，所以读写速度非常快。<br> Redis 提供了多种数据类型来支持不同的业务场景。Redis 还支持事务 、持久化、Lua 脚本、多种集群方案。</p>
+<h1 id="2-分布式缓存常见的技术选型方案有哪些？"><a href="#2-分布式缓存常见的技术选型方案有哪些？" class="headerlink" title="2. 分布式缓存常见的技术选型方案有哪些？"></a>2. 分布式缓存常见的技术选型方案有哪些？</h1><p><code>Memcached</code> 和 <code>Redis</code>。<br>分布式缓存主要解决的是<strong>单机缓存的容量受服务器限制并且无法保存通用信息的问题</strong>。因为，本地缓存只在当前服务里有效，比如如果你部署了两个相同的服务，他们两者之间的缓存数据是无法共同的。</p>
+<h1 id="3-Redis-和-Memcached-的区别和共同点"><a href="#3-Redis-和-Memcached-的区别和共同点" class="headerlink" title="3. Redis 和 Memcached 的区别和共同点"></a>3. Redis 和 Memcached 的区别和共同点</h1><p><strong>共同点：</strong></p>
+<ol>
+<li>都是基于内存的数据库，一般都用来当做缓存使用。</li>
+<li>都有过期策略。</li>
+<li>两者的性能都非常高。</li>
+</ol>
+<p><strong>区别：</strong></p>
+<ol>
+<li><code>Redis</code> 支持更丰富的数据类型（支持更复杂的应用场景）。<code>Redis</code> 不仅仅支持简单的 <code>k/v</code> 类型的数据，同时还提供 <code>list</code>，<code>set</code>，<code>zset</code>，<code>hash</code> 等数据结构的存储。<code>Memcached</code> 只支持最简单的 <code>k/v</code> 数据类型。</li>
+<li><code>Redis</code> 支持数据的持久化，可以将内存中的数据保持在磁盘中，重启的时候可以再次加载进行使用,而 <code>Memcached</code> 把数据全部存在内存之中。</li>
+<li><code>Redis</code> 有灾难恢复机制。 因为可以把缓存中的数据持久化到磁盘上。</li>
+<li><code>Redis</code> 在服务器内存使用完之后，可以将不用的数据放到磁盘上。但是，<code>Memcached</code> 在服务器内存使用完之后，就会直接报异常。</li>
+<li><code>Memcached</code> 没有原生的集群模式，需要依靠客户端来实现往集群中分片写入数据；但是 <code>Redis</code> 目前是原生支持 <code>cluster</code> 模式的。</li>
+<li><code>Memcached</code> 是多线程，非阻塞 <code>IO</code> 复用的网络模型；Redis 使用单线程的多路 <code>IO</code> 复用模型。 （<code>Redis 6.0</code> 引入了多线程 IO ）</li>
+<li><code>Redis</code> 支持发布订阅模型、<code>Lua</code> 脚本、事务等功能，而 <code>Memcached</code> 不支持。并且，<code>Redis</code> 支持更多的编程语言。</li>
+<li><code>Memcached</code> 过期数据的删除策略只用了惰性删除，而 <code>Redis</code> 同时使用了惰性删除与定期删除。<h1 id="2-缓存数据的处理流程是怎样的？"><a href="#2-缓存数据的处理流程是怎样的？" class="headerlink" title="2. 缓存数据的处理流程是怎样的？"></a>2. 缓存数据的处理流程是怎样的？</h1><img src="https://img-blog.csdnimg.cn/34510fc5f10d405c8d187adde2bcc536.png" alt="在这里插入图片描述"></li>
+<li>如果用户请求的数据在缓存中就直接返回。</li>
+<li>缓存中不存在的话就看数据库中是否存在。</li>
+<li>数据库中存在的话就更新缓存中的数据。</li>
+<li>数据库中不存在的话就返回空数据。<h1 id="3-为什么要用-Redis-x2F-为什么要用缓存？"><a href="#3-为什么要用-Redis-x2F-为什么要用缓存？" class="headerlink" title="3. 为什么要用 Redis&#x2F;为什么要用缓存？"></a>3. 为什么要用 Redis&#x2F;为什么要用缓存？</h1>简单，来说使用缓存主要是为了<strong>提升用户体验以及应对更多的用户</strong>。<br><strong>高性能</strong>：保证用户下一次再访问这些数据的时候就可以<strong>直接从缓存中获取</strong>了。操作缓存就是直接操作内存，所以速度相当快。<br>不过，要保持数据库和缓存中的数据的一致性。 如果数据库中的对应数据改变的之后，同步改变缓存中相应的数据即可！<br><strong>高并发：</strong><br><strong>直接操作缓存能够承受的数据库请求数量是远远大于直接访问数据库的</strong>，所以我们可以考虑把数据库中的部分数据转移到缓存中去，这样用户的一部分请求会直接到缓存这里而不用经过数据库。进而，我们也就提高了系统整体的并发。<br>（一般像 MySQL 这类的数据库的 QPS 大概都在 1w 左右（4 核 8g） ，但是使用 Redis 缓存之后很容易达到 10w+，甚至最高能达到 30w+（就单机 redis 的情况，redis 集群的话会更高）。）<br>（QPS（Query Per Second）：服务器每秒可以执行的查询次数。）<h1 id="4-Redis-除了做缓存，还能做什么？"><a href="#4-Redis-除了做缓存，还能做什么？" class="headerlink" title="4. Redis 除了做缓存，还能做什么？"></a>4. Redis 除了做缓存，还能做什么？</h1></li>
+</ol>
+<ul>
+<li>分布式锁</li>
+<li>限流：<code>Redis</code> 和 <code>lLua</code> 脚本</li>
+<li>消息队列：<code>Redis</code> 自带的 <code>list</code> 数据结构可以作为一个简单的队列使用。</li>
+<li>复杂业务场景</li>
+</ul>
+<h1 id="5-Redis-没有使用多线程？为什么不使用多线程？"><a href="#5-Redis-没有使用多线程？为什么不使用多线程？" class="headerlink" title="5. Redis 没有使用多线程？为什么不使用多线程？"></a>5. Redis 没有使用多线程？为什么不使用多线程？</h1><p><code>Redis 4.0</code> 增加的多线程主要是<strong>针对一些大键值对的删除操作的命令</strong>，使用这些命令就会使用主处理之外的其他线程来“异步处理”。</p>
+<ol>
+<li><code>Redis6.0</code> 之前 为什么不使用多线程？<ol>
+<li>单线程编程容易并且更容易维护；</li>
+<li>Redis 的性能瓶颈不在 CPU ，主要在内存和网络；</li>
+<li>多线程就会存在死锁、线程上下文切换等问题，甚至会影响性能。</li>
+</ol>
+</li>
+<li>Redis6.0 之后为何引入了多线程？<br> 主要是为了提高网络 IO 读写性能。（性能瓶颈（Redis 的瓶颈主要受限于内存和网络））<br> 虽然，Redis6.0 引入了多线程，但是 Redis 的多线程只是在网络数据的读写这类耗时操作上使用了，执行命令仍然是单线程顺序执行。因此，你也不需要担心线程安全问题。</li>
+</ol>
+<h1 id="6-Redis-给缓存数据设置过期时间有啥用？"><a href="#6-Redis-给缓存数据设置过期时间有啥用？" class="headerlink" title="6. Redis 给缓存数据设置过期时间有啥用？"></a>6. Redis 给缓存数据设置过期时间有啥用？</h1><p>因为内存是有限的，如果缓存中的所有数据都是一直保存的话，分分钟直接 <code>Out of memory</code>。<br>（其他作用如验证码&#x2F;登录信息等）</p>
+<h1 id="7-Redis-是如何判断数据是否过期的呢？"><a href="#7-Redis-是如何判断数据是否过期的呢？" class="headerlink" title="7. Redis 是如何判断数据是否过期的呢？"></a>7. Redis 是如何判断数据是否过期的呢？</h1><p><code>Redis</code> 通过一个叫做<strong>过期字典</strong>（可以看作是 <code>hash</code> 表）来保存数据过期的时间。<br>过期字典的键指向 <code>Redis</code> 数据库中的某个 <code>key</code>(键)，过期字典的值是一个 <code>long long</code> 类型的整数，这个整数保存了 <code>key</code> 所指向的数据库键的过期时间（毫秒精度的 <code>UNIX</code> 时间戳）。</p>
+<h1 id="8-过期的数据的删除策略了解么？"><a href="#8-过期的数据的删除策略了解么？" class="headerlink" title="8. 过期的数据的删除策略了解么？"></a>8. 过期的数据的删除策略了解么？</h1><p>常用的过期数据的删除策略就两个</p>
+<ol>
+<li><p><strong>惰性删除</strong>：只会在取出 <code>key</code> 的时候才对数据进行过期检查。这样对 <code>CPU</code> 最友好，但是可能会造成太多过期 <code>key</code> 没有被删除。<strong>（对CPU好）</strong></p>
+</li>
+<li><p><strong>定期删除</strong>：每隔一段时间抽取一批 <code>key</code> 执行删除过期 <code>key</code> 操作。并且，<code>Redis</code> 底层会通过限制删除操作执行的时长和频率来减少删除操作对 <code>CPU</code> 时间的影响。<strong>（对内存好）</strong><br><code>Redis</code> 采用的是 <strong>定期删除+惰性删除</strong>。<code>Redis</code> 内存淘汰机制。</p>
+<h1 id="9-Redis-内存淘汰机制了解么？"><a href="#9-Redis-内存淘汰机制了解么？" class="headerlink" title="9. Redis 内存淘汰机制了解么？"></a>9. Redis 内存淘汰机制了解么？</h1><p><code>Redis</code> 提供 6 种数据淘汰策略：</p>
+</li>
+<li><p><code>volatile-lru</code>（least recently used）：从已设置过期时间的数据集（server.db[i].expires）中挑选最近最少使用的数据淘汰</p>
+</li>
+<li><p><code>volatile-ttl</code>：从已设置过期时间的数据集（server.db[i].expires）中挑选将要过期的数据淘汰</p>
+</li>
+<li><p><code>volatile-random</code>：从已设置过期时间的数据集（server.db[i].expires）中任意选择数据淘汰</p>
+</li>
+<li><p><code>allkeys-lru</code>（least recently used）：当内存不足以容纳新写入数据时，在键空间中，移除最近最少使用的 key（这个是最常用的）</p>
+</li>
+<li><p><code>allkeys-random</code>：从数据集（server.db[i].dict）中任意选择数据淘汰</p>
+</li>
+<li><p><code>no-eviction</code>：禁止驱逐数据，也就是说当内存不足以容纳新写入数据时，新写入操作会报错。这个应该没人使用吧！<br>4.0 版本后增加以下两种：</p>
+</li>
+<li><p><code>volatile-lfu</code>（least frequently used）：从已设置过期时间的数据集（server.db[i].expires）中挑选<strong>最不经常使用</strong>的数据淘汰</p>
+</li>
+<li><p><code>allkeys-lfu</code>（least frequently used）：当内存不足以容纳新写入数据时，在键空间中，<strong>移除最不经常使用的 <code>key</code></strong></p>
+<h1 id="10-Redis-持久化机制-怎么保证-Redis-挂掉之后再重启数据可以进行恢复"><a href="#10-Redis-持久化机制-怎么保证-Redis-挂掉之后再重启数据可以进行恢复" class="headerlink" title="10. Redis 持久化机制(怎么保证 Redis 挂掉之后再重启数据可以进行恢复)"></a>10. Redis 持久化机制(怎么保证 Redis 挂掉之后再重启数据可以进行恢复)</h1></li>
+<li><p><strong>快照（snapshotting）持久化（RDB）</strong>（默认）<br><code>Redis</code> 可以通过创建快照来获得存储在内存里面的数据在某个时间点上的副本。<br>Redis 创建快照之后，可以对快照进行备份，可以将快照复制到其他服务器从而创建具有相同数据的服务器副本（Redis 主从结构，主要用来提高 Redis 性能），还可以将快照留在原地以便重启服务器的时候使用。</p>
+</li>
+<li><p><strong>AOF（append-only file）持久化</strong><br>与快照持久化相比，<code>AOF</code> 持久化的<strong>实时性更好</strong>，因此已成为主流的持久化方案。<br>开启 <code>AOF</code> 持久化后每执行一条会更改 <code>Redis</code> 中的数据的命令，Redis 就会将该命令写入到内存缓存 <code>server.aof_buf </code>中，然后再根据 <code>appendfsync</code> 配置来决定何时将其同步到硬盘中的 <code>AOF</code> 文件。<br>为了兼顾数据和写入性能，用户可以考虑 <code>appendfsync everysec</code> 选项 ，让 <code>Redis</code> 每秒同步一次 <code>AOF</code> 文件，<code>Redis</code> 性能几乎没受到任何影响。而且这样即使出现系统崩溃，用户最多只会丢失一秒之内产生的数据。</p>
+</li>
+</ol>
+<h1 id="11-Redis-bigkey"><a href="#11-Redis-bigkey" class="headerlink" title="11. Redis bigkey"></a>11. Redis bigkey</h1><p><code>bigkey</code>：简单来说，如果一个 <code>key</code> 对应的 <code>value</code> 所占用的内存比较大。会消耗更多的内存空间，bigkey 对性能也会有比较大的影响。<br>如何发现 bigkey？<br>1、使用 Redis 自带的 –bigkeys 参数来查找。<br>2、分析 RDB 文件。前提是RDB持久化，现成代码套用。</p>
+<h1 id="12-Redis-事务"><a href="#12-Redis-事务" class="headerlink" title="12. Redis 事务"></a>12. Redis 事务</h1><p><code>Redis</code> 可以通过 <code>MULTI</code>，<code>EXEC</code>，<code>DISCARD</code> 和 <code>WATCH</code> 等命令来实现事务(transaction)功能。</p>
+<ul>
+<li><code>MULTI</code> ：开始		<code>EXEC</code>：执行		<code>DISCARD</code>：取消		<code>WATCH</code>：监听指定的键<br>（被 <code>WATCH</code> 命令监视的键被修改的话，整个事务都不会执行，直接返回失败。）</li>
+</ul>
+<p>使用 <code>MULTI</code> 命令后可以输入多个命令。<code>Redis</code> 不会立即执行这些命令，而是将它们放到队列，当调用了 <code>EXEC</code> 命令将执行所有命令。<br>这个过程是这样的：</p>
+<ol>
+<li>开始事务（<code>MULTI</code>）。</li>
+<li>命令入队(批量操作 <code>Redis</code> 的命令，先进先出（FIFO）的顺序执行)。</li>
+<li>执行事务(<code>EXEC</code>)。</li>
+</ol>
+<p><code>Redis</code> 是不支持 roll back 的，因而不满足原子性的（而且不满足持久性）。ACID</p>
+<h1 id="13-Redis-可以做消息队列么？"><a href="#13-Redis-可以做消息队列么？" class="headerlink" title="13. Redis 可以做消息队列么？"></a>13. Redis 可以做消息队列么？</h1><p><code>Redis 5.0</code> 新增加的一个数据结构 <code>Stream</code> 可以用来做消息队列，Stream 支持：</p>
+<ul>
+<li>发布 &#x2F; 订阅模式</li>
+<li>按照消费者组进行消费</li>
+<li>消息持久化（ RDB 和 AOF）<br>和专业的消息队列相比，还是有很多欠缺的地方比如消息丢失和堆积问题不好解决。<br>选择市面上比较成熟的一些消息队列比如 <code>RocketMQ</code>、<code>Kafka</code>。<h1 id="14-缓存穿透"><a href="#14-缓存穿透" class="headerlink" title="14. 缓存穿透"></a>14. 缓存穿透</h1>大量请求的 <code>key</code> 根本不存在于缓存中，导致请求直接到了数据库上，根本没有经过缓存这一层。<br><strong>有哪些解决办法？</strong><br>1）<strong>缓存无效 <code>key</code></strong><br>如果缓存和数据库都查不到某个 <code>key</code> 的数据就写一个到 <code>Redis</code> 中去并设置过期时间<br>2）<strong>布隆过滤器</strong><br>把所有可能存在的请求的值都存放在布隆过滤器中，当用户请求过来，先判断用户发来的请求的值是否存在于布隆过滤器中。不存在的话，直接返回请求参数错误信息给客户端，存在的话才会走下面的流程。<br><strong>布隆过滤器说某个元素存在，小概率会误判。布隆过滤器说某个元素不在，那么这个元素一定不在。</strong></li>
+</ul>
+<p><strong>当一个元素加入布隆过滤器中的时候，会进行哪些操作：</strong></p>
+<ol>
+<li>使用布隆过滤器中的哈希函数对元素值进行计算，得到哈希值（有几个哈希函数得到几个哈希值）。</li>
+<li>根据得到的哈希值，在位数组中把对应下标的值置为 1。</li>
+</ol>
+<h1 id="15-缓存雪崩"><a href="#15-缓存雪崩" class="headerlink" title="15. 缓存雪崩"></a>15. 缓存雪崩</h1><p><strong>缓存在同一时间大面积的失效，后面的请求都直接落到了数据库上，造成数据库短时间内承受大量请求。</strong><br>这就好比雪崩一样，摧枯拉朽之势，数据库的压力可想而知，可能直接就被这么多请求弄宕机了。<br>还有一种缓存雪崩的场景是：<strong>有一些被大量访问数据（热点缓存）在某一时刻大面积失效，导致对应的请求直接落到了数据库上。</strong>（如秒杀活动）</p>
+<ol>
+<li><p>针对 <code>Redis</code> <strong>服务不可用</strong>的情况：</p>
+<ol>
+<li>采用 <code>Redis</code> 集群，避免单机出现问题整个缓存服务都没办法使用。</li>
+<li>限流，避免同时处理大量的请求。</li>
+</ol>
+</li>
+<li><p>针对<strong>热点缓存失效</strong>的情况：</p>
+<ol>
+<li>设置不同的失效时间比如随机设置缓存的失效时间。</li>
+<li>缓存永不失效。</li>
+</ol>
+</li>
+</ol>
+<h1 id="16-如何保证缓存和数据库数据的一致性？"><a href="#16-如何保证缓存和数据库数据的一致性？" class="headerlink" title="16. 如何保证缓存和数据库数据的一致性？"></a>16. 如何保证缓存和数据库数据的一致性？</h1><p>如果更新数据库成功，而删除缓存这一步失败的情况的话，简单说两个解决方案：</p>
+<ol>
+<li><strong>缓存失效时间变短</strong>（不推荐，治标不治本） ：我们让缓存数据的过期时间变短，这样的话缓存就会从数据库中加载数据。另外，这种解决办法对于先操作缓存后操作数据库的场景不适用。</li>
+<li><strong>增加 <code>cache</code> 更新重试机制</strong>（常用）： 如果 <code>cache</code> 服务当前不可用导致缓存删除失败的话，我们就隔一段时间进行重试，重试次数可以自己定。如果多次重试还是失败的话，我们可以把当前更新失败的 <code>key</code> 存入队列中，等缓存服务可用之后，再将缓存中对应的 <code>key</code> 删除即可。</li>
+</ol>
+<hr>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>本文档为个人方便自己熟记而整理，来自javaguide。<br>javaguide是个优秀的计算机知识整理：<a target="_blank" rel="noopener" href="https://javaguide.cn/">https://javaguide.cn/</a><br><img src="https://img-blog.csdnimg.cn/0fa20b02a1a7492d975f4ffeb1f8f6ef.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5p6r5bGx5Lio54Gs6JC957qi6Zuo,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">衣羊干洗</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2022/04/08/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/">http://example.com/2022/04/08/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">衣羊干洗</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                    <span class="chip bg-color">数据库</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2022/04/22/Docker%E3%80%81%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Docker、消息队列">
+                        
+                        <span class="card-title">Docker、消息队列</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-22
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/" class="post-category">
+                                    分布式
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%AE%B9%E5%99%A8/">
+                        <span class="chip bg-color">容器</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="计算机网络基础知识整理">
+                        
+                        <span class="card-title">计算机网络基础知识整理</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/408/" class="post-category">
+                                    408
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                        <span class="chip bg-color">计算机网络</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2022</span>
+            
+            <a href="/about" target="_blank">衣羊干洗</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://blog.csdn.net/qq_39493185" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN: https://blog.csdn.net/qq_39493185" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">CSDN</i>
+    </a>
+
+
+
+
+    <a href="mailto:1426964415@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1426964415" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1426964415" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+    <a href="https://www.zhihu.com/people/dian-zi-feng-zhuang-ji-zhu-luo-liang-a1" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/dian-zi-feng-zhuang-ji-zhu-luo-liang-a1" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
